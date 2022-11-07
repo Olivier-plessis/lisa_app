@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lisa_app/presentation/pages/home/home.dart';
-import 'package:lisa_app/presentation/pages/sing/sing.dart';
+import 'package:lisa_app/presentation/pages/sign/sign.dart';
 import 'package:lisa_app/presentation/pages/splash/splash.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =

@@ -1,0 +1,10 @@
+{
+  "google_sign_fail" : "échec d'authentification !",
+  "you_have_no_internet_connection" : "vérifier votre connection internet",
+  "authentication_failure" : "échec d'authentification !",
+  "server_error_has_occurred" : "une erreur de serveur s'est produite !",
+  "unauthorized_access" : "accès non autorisé",
+  "unexpected_data_error" : "erreur de données inattendue",
+  "sign_out_error" : "erreur de déconnexion",
+  "authentication_local_data_source_error" : "erreur d'authentification de la source de données locale"
+}

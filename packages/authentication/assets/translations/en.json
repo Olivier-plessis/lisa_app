@@ -1,0 +1,10 @@
+{
+  "google_sign_fail" : "google sign fail",
+  "you_have_no_internet_connection" : "You have no internet connection!",
+  "authentication_failure" : "authentication failure",
+  "server_error_has_occurred" : "server error has occurred!",
+  "unauthorized_access" : "unauthorized access",
+  "unexpected_data_error" : "unexpected data error",
+  "sign_out_error" : "sign out error",
+  "authentication_local_data_source_error" : "authentication local data source error"
+}
