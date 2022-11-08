@@ -32,7 +32,7 @@ class FirebaseUserRepository implements IUserRepository {
       email: currentUser.email!,
       name: currentUser.displayName!,
       photo: currentUser.photoURL!,
-      createdAt: DateTime.now(),
+      // createdAt: DateTime.now(),
     );
     await _firebaseFirestore
         .doc(collectionPath(currentUser.uid))
