@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/presentation/pages/home/home.dart';
 import 'package:lisa_app/presentation/pages/sign/sign.dart';
 import 'package:lisa_app/presentation/pages/splash/splash.dart';
@@ -38,7 +39,7 @@ final Provider<GoRouter> routerProvider =
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: router._routes,
-    initialLocation: '/sign',
+    initialLocation: '/',
   );
 });
 
@@ -49,22 +50,24 @@ class RouterNotifier extends ChangeNotifier {
 
   List<GoRoute> get _routes => <GoRoute>[
         GoRoute(
-          path: '/splash',
+          name: AppPage.splash.routeName,
+          path: AppPage.splash.routePath,
           pageBuilder: (_, GoRouterState state) => NoTransitionPage<void>(
             key: state.pageKey,
             child: const SplashPage(),
           ),
         ),
         GoRoute(
-          name: 'sign',
-          path: '/sign',
+          name: AppPage.auth.routeName,
+          path: AppPage.auth.routePath,
           pageBuilder: (_, GoRouterState state) => NoTransitionPage<void>(
             key: state.pageKey,
             child: const SignPage(),
           ),
         ),
         GoRoute(
-          path: '/',
+          name: AppPage.home.routeName,
+          path: AppPage.home.routePath,
           pageBuilder: (_, GoRouterState state) => NoTransitionPage<void>(
             key: state.pageKey,
             child: const HomePage(),
