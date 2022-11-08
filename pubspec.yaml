@@ -43,8 +43,8 @@ dependencies:
   app_ui:
     path: packages/app_ui
 
-  atomic_widget:
-    path: packages/atomic_widget
+  atomic_ui:
+    path: packages/atomic_ui
 
 dependency_overrides:
   firebase_core_platform_interface: ^4.5.2

@@ -1,0 +1,44 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "build/**"
+
+linter:
+  rules:
+    # Make constructors the first thing in every class
+    sort_constructors_first: true
+
+    prefer_single_quotes: true
+
+    # Blindly follow the Flutter code style, which prefers types everywhere
+    always_specify_types: true
+
+    # Back to the 80s
+    lines_longer_than_80_chars: true
+
+    # Use parameter order as in json response
+    always_put_required_named_parameters_first: false
+
+    # Util classes are awesome!
+    avoid_classes_with_only_static_members: false
+
+
+dart_code_metrics:
+  anti-patterns:
+    - long-method
+    - long-parameter-list
+  metrics:
+    cyclomatic-complexity: 20
+    maximum-nesting-level: 5
+    number-of-parameters: 4
+    source-lines-of-code: 50
+  metrics-exclude:
+    - test/**
+  rules:
+    - newline-before-return
+    - no-boolean-literal-compare
+    - no-empty-block
+    - prefer-trailing-comma
+    - prefer-conditional-expressions
+    - no-equal-then-else
