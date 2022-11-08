@@ -14,9 +14,9 @@ A few resources to started this project:
 ## BackLogs
 
 - [x] Design
-- [ ] Clean Architecture
-- [ ] Firebase configuration
-- [ ] google sing_in authentication
+- [X] Clean Architecture
+- [X] Firebase configuration
+- [X] google sing_in authentication
 - [ ] Dio - call api google books
 - [ ] provider  - Riverpod 2.0
 - [ ] state - Freezed
