@@ -122,8 +122,8 @@ spider:
   groups:
     - class_name: Images
       sub_groups:
-#        - path: assets/images
-#          types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp ]
+        - path: assets/images
+          types: [ .png, .jpg, .jpeg, .webp, .webm, .bmp ]
         - path: assets/vectors
           prefix: svg
           types: [ .svg ]

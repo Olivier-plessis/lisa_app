@@ -21,13 +21,10 @@ class SignPage extends ConsumerWidget {
         systemNavigationBarColor: ColorTheme.secondaryColor,
         statusBarIconBrightness: Brightness.dark));
 
-    // ref.read(authNotifierProvider.notifier).signIn()
-
     return Scaffold(
       backgroundColor: ColorTheme.secondaryColor,
       body: Stack(
         children: <Widget>[
-          // The containers in the background
           Column(
             children: <Widget>[
               Container(
@@ -61,7 +58,6 @@ class SignPage extends ConsumerWidget {
               ),
             ],
           ),
-
           Container(
             alignment: Alignment.topCenter,
             padding: EdgeInsets.only(
@@ -78,8 +74,7 @@ class SignPage extends ConsumerWidget {
                   color: ColorTheme.tertiaryColor,
                 ),
                 padding: const EdgeInsets.all(0),
-                backgroundColor:
-                    ColorTheme.orangeLightColor, // <-- Button color
+                backgroundColor: ColorTheme.orangeLightColor,
               ),
               child: const Icon(
                 Icons.arrow_forward_outlined,
@@ -112,45 +107,11 @@ class SignPage extends ConsumerWidget {
                 ),
                 ATextHeadlineTwo(
                     content: LocaleKeys.authenticate_you.tr().toCapitalized()),
-                ElevatedButton(
+                const Gap(100.0),
+                MSocialButton(
+                  label: 'Sign with google',
+                  icon: const AssetImage(Images.google),
                   onPressed: onPressed,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    elevation: 0,
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 24)
-                            .r,
-                    side: BorderSide(
-                        width: 1,
-                        color: ColorTheme.secondaryColor.withOpacity(0.44)),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10).r,
-                    ),
-                    textStyle:
-                        TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w700),
-                  ),
-                  child: Center(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      // Container(
-                      //   height: 18.0.r,
-                      //   width: 18.0.r,
-                      //   decoration: BoxDecoration(
-                      //     image: DecorationImage(image: icon, fit: BoxFit.cover),
-                      //     shape: BoxShape.circle,
-                      //   ),
-                      // ),
-                      // SizedBox(width: 14.w),
-                      Text(
-                        "Sign with google",
-                        style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.bold,
-                            color: ColorTheme.secondaryColor.withOpacity(0.54)),
-                      ),
-                    ],
-                  )),
                 ),
               ],
             ),
