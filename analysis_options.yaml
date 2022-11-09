@@ -18,8 +18,8 @@ analyzer:
 
 linter:
   rules:
-    sort_pub_dependencies: false
-    sort_unnamed_constructors_first: false
+    sort_pub_dependencies: true
+    sort_unnamed_constructors_first: true
     curly_braces_in_flow_control_structures: false
     library_prefixes: false
     avoid_classes_with_only_static_members: false

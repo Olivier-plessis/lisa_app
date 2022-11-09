@@ -69,6 +69,7 @@ dev_dependencies:
   freezed: null
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
+  import_sorter: ^4.6.0
 
 
 flutter:
@@ -132,3 +133,6 @@ spider:
         - path: assets/vectors
           prefix: svg
           types: [ .svg ]
+
+import_sorter:
+  comments: false

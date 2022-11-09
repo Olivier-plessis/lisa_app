@@ -1,8 +1,10 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_ui/app_ui.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_bottom_bar/lisa_bottom_bar.dart';
+
+import 'package:lisa_app/common/routes/router_utils.dart';
 
 class ScaffoldWithNavBar extends StatefulWidget {
   const ScaffoldWithNavBar({
@@ -41,7 +43,7 @@ class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorTheme.mainLightColor,
+      backgroundColor: ColorTheme.tertiaryColor,
       body: widget.child,
       bottomNavigationBar: LisaBottomNavigation(
         itemIcons: const <IconData>[

@@ -15,18 +15,19 @@ class AuthNotifier extends StateNotifier<AuthState> {
   final IUserProvider _userProvider;
   final IAuthRepository _authRepo;
   final IUserRepository _userRepository;
-
   Future<void> checkIfAuthenticated() async {
-    state = const AuthState.authenticating();
-    await Future.delayed(const Duration(seconds: 2));
+    Future<void>.microtask(() async {
+      state = const AuthState.authenticating();
+      await Future.delayed(const Duration(seconds: 2));
+      final bool regComplete = await _authRepo.isRegistrationComplete();
 
-    final bool regComplete = await _authRepo.isRegistrationComplete();
-    if (regComplete) {
-      await _userProvider.setup();
-      state = const AuthState.authenticated();
-    } else {
-      state = const AuthState.unauthenticated();
-    }
+      if (regComplete) {
+        await _userProvider.setup();
+        state = const AuthState.authenticated();
+      } else {
+        state = const AuthState.unauthenticated();
+      }
+    });
   }
 
   Future<void> signIn() async {
