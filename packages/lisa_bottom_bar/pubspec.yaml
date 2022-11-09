@@ -1,8 +1,8 @@
-name: atomic_ui
+name: lisa_bottom_bar
 description: A new Flutter package project.
 version: 0.0.1
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 environment:
   sdk: '>=2.18.4 <3.0.0'
@@ -15,15 +15,13 @@ dependencies:
   app_ui:
     path: ../app_ui
 
-  cupertino_icons: ^1.0.5
-
+  atomic_ui:
+    path: ../atomic_ui
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.1
-
 
 flutter:
 

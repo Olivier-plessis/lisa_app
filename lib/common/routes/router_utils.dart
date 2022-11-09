@@ -1,11 +1,4 @@
-enum AppPage {
-  splash,
-  auth,
-  home,
-  favorite,
-  reading,
-  profile,
-}
+enum AppPage { splash, auth, home, favorite, reading, profile, search }
 
 extension AppPageExtension on AppPage {
   String get routePath {
@@ -18,6 +11,8 @@ extension AppPageExtension on AppPage {
         return '/sign';
       case AppPage.favorite:
         return '/favorite';
+      case AppPage.search:
+        return '/search';
       case AppPage.reading:
         return '/reading';
       case AppPage.profile:
@@ -41,6 +36,9 @@ extension AppPageExtension on AppPage {
 
       case AppPage.favorite:
         return 'FAVORITE';
+
+      case AppPage.search:
+        return 'SEARCH';
 
       case AppPage.reading:
         return 'READING';
