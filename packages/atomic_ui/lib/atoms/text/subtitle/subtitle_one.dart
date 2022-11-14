@@ -11,7 +11,7 @@ class ATextSubTitlePrimary extends StatelessWidget {
     return Text(
       content,
       style: textTheme.subtitle1!
-          .copyWith(color: Theme.of(context).colorScheme.primary),
+          .copyWith(color: Theme.of(context).colorScheme.inversePrimary),
     );
   }
 }

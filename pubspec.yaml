@@ -14,12 +14,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.5
 
   get_it: ^7.2.0
   injectable: ^1.5.4
   dartz: ^0.10.1
   json_serializable: ^6.5.4
+
+  cupertino_icons: ^1.0.5
 
   flutter_riverpod: ^2.1.1
   hooks_riverpod: ^2.1.1
@@ -58,10 +59,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  logger: ^1.1.0
   flutter_lints: ^2.0.1
+  logger: ^1.1.0
   flutter_flavorizr: ^2.1.5
-  injectable_generator: ^1.5.4
+  injectable_generator: ^1.5.5
   build_runner:
   lint: ^1.10.0
 

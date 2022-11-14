@@ -22,6 +22,7 @@ mixin _$AuthState {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -33,6 +34,7 @@ mixin _$AuthState {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -44,6 +46,7 @@ mixin _$AuthState {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -56,6 +59,7 @@ mixin _$AuthState {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -67,6 +71,7 @@ mixin _$AuthState {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -78,6 +83,7 @@ mixin _$AuthState {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,
@@ -144,6 +150,7 @@ class _$_Initial implements _Initial {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -158,6 +165,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -172,6 +180,7 @@ class _$_Initial implements _Initial {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -190,6 +199,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -204,6 +214,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -218,6 +229,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,
@@ -276,6 +288,7 @@ class _$_Authenticating implements _Authenticating {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -290,6 +303,7 @@ class _$_Authenticating implements _Authenticating {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -304,6 +318,7 @@ class _$_Authenticating implements _Authenticating {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -322,6 +337,7 @@ class _$_Authenticating implements _Authenticating {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -336,6 +352,7 @@ class _$_Authenticating implements _Authenticating {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -350,6 +367,7 @@ class _$_Authenticating implements _Authenticating {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,
@@ -408,6 +426,7 @@ class _$_Unauthenticated implements _Unauthenticated {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -422,6 +441,7 @@ class _$_Unauthenticated implements _Unauthenticated {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -436,6 +456,7 @@ class _$_Unauthenticated implements _Unauthenticated {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -454,6 +475,7 @@ class _$_Unauthenticated implements _Unauthenticated {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -468,6 +490,7 @@ class _$_Unauthenticated implements _Unauthenticated {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -482,6 +505,7 @@ class _$_Unauthenticated implements _Unauthenticated {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,
@@ -540,6 +564,7 @@ class _$_Authenticated implements _Authenticated {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -554,6 +579,7 @@ class _$_Authenticated implements _Authenticated {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -568,6 +594,7 @@ class _$_Authenticated implements _Authenticated {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -586,6 +613,7 @@ class _$_Authenticated implements _Authenticated {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -600,6 +628,7 @@ class _$_Authenticated implements _Authenticated {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -614,6 +643,7 @@ class _$_Authenticated implements _Authenticated {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,
@@ -628,6 +658,187 @@ class _$_Authenticated implements _Authenticated {
 
 abstract class _Authenticated implements AuthState {
   const factory _Authenticated() = _$_Authenticated;
+}
+
+/// @nodoc
+abstract class _$$_AuthenticatedUserCopyWith<$Res> {
+  factory _$$_AuthenticatedUserCopyWith(_$_AuthenticatedUser value,
+          $Res Function(_$_AuthenticatedUser) then) =
+      __$$_AuthenticatedUserCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserCredentials user});
+
+  $UserCredentialsCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$_AuthenticatedUserCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_AuthenticatedUser>
+    implements _$$_AuthenticatedUserCopyWith<$Res> {
+  __$$_AuthenticatedUserCopyWithImpl(
+      _$_AuthenticatedUser _value, $Res Function(_$_AuthenticatedUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$_AuthenticatedUser(
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserCredentials,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCredentialsCopyWith<$Res> get user {
+    return $UserCredentialsCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_AuthenticatedUser implements _AuthenticatedUser {
+  const _$_AuthenticatedUser({required this.user});
+
+  @override
+  final UserCredentials user;
+
+  @override
+  String toString() {
+    return 'AuthState.authenticatedUser(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthenticatedUser &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AuthenticatedUserCopyWith<_$_AuthenticatedUser> get copyWith =>
+      __$$_AuthenticatedUserCopyWithImpl<_$_AuthenticatedUser>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() authenticating,
+    required TResult Function() unauthenticated,
+    required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
+    required TResult Function() savedUser,
+    required TResult Function() signedOut,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return authenticatedUser(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? authenticating,
+    TResult? Function()? unauthenticated,
+    TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
+    TResult? Function()? savedUser,
+    TResult? Function()? signedOut,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return authenticatedUser?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? authenticating,
+    TResult Function()? unauthenticated,
+    TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
+    TResult Function()? savedUser,
+    TResult Function()? signedOut,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (authenticatedUser != null) {
+      return authenticatedUser(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Authenticating value) authenticating,
+    required TResult Function(_Unauthenticated value) unauthenticated,
+    required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
+    required TResult Function(_SavedUser value) savedUser,
+    required TResult Function(_SignedOut value) signedOut,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return authenticatedUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Authenticating value)? authenticating,
+    TResult? Function(_Unauthenticated value)? unauthenticated,
+    TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
+    TResult? Function(_SavedUser value)? savedUser,
+    TResult? Function(_SignedOut value)? signedOut,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return authenticatedUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Authenticating value)? authenticating,
+    TResult Function(_Unauthenticated value)? unauthenticated,
+    TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
+    TResult Function(_SavedUser value)? savedUser,
+    TResult Function(_SignedOut value)? signedOut,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (authenticatedUser != null) {
+      return authenticatedUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthenticatedUser implements AuthState {
+  const factory _AuthenticatedUser({required final UserCredentials user}) =
+      _$_AuthenticatedUser;
+
+  UserCredentials get user;
+  @JsonKey(ignore: true)
+  _$$_AuthenticatedUserCopyWith<_$_AuthenticatedUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -672,6 +883,7 @@ class _$_SavedUser implements _SavedUser {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -686,6 +898,7 @@ class _$_SavedUser implements _SavedUser {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -700,6 +913,7 @@ class _$_SavedUser implements _SavedUser {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -718,6 +932,7 @@ class _$_SavedUser implements _SavedUser {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -732,6 +947,7 @@ class _$_SavedUser implements _SavedUser {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -746,6 +962,7 @@ class _$_SavedUser implements _SavedUser {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,
@@ -804,6 +1021,7 @@ class _$_SignedOut implements _SignedOut {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -818,6 +1036,7 @@ class _$_SignedOut implements _SignedOut {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -832,6 +1051,7 @@ class _$_SignedOut implements _SignedOut {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -850,6 +1070,7 @@ class _$_SignedOut implements _SignedOut {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -864,6 +1085,7 @@ class _$_SignedOut implements _SignedOut {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -878,6 +1100,7 @@ class _$_SignedOut implements _SignedOut {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,
@@ -971,6 +1194,7 @@ class _$_Failure implements _Failure {
     required TResult Function() authenticating,
     required TResult Function() unauthenticated,
     required TResult Function() authenticated,
+    required TResult Function(UserCredentials user) authenticatedUser,
     required TResult Function() savedUser,
     required TResult Function() signedOut,
     required TResult Function(Failure failure) failure,
@@ -985,6 +1209,7 @@ class _$_Failure implements _Failure {
     TResult? Function()? authenticating,
     TResult? Function()? unauthenticated,
     TResult? Function()? authenticated,
+    TResult? Function(UserCredentials user)? authenticatedUser,
     TResult? Function()? savedUser,
     TResult? Function()? signedOut,
     TResult? Function(Failure failure)? failure,
@@ -999,6 +1224,7 @@ class _$_Failure implements _Failure {
     TResult Function()? authenticating,
     TResult Function()? unauthenticated,
     TResult Function()? authenticated,
+    TResult Function(UserCredentials user)? authenticatedUser,
     TResult Function()? savedUser,
     TResult Function()? signedOut,
     TResult Function(Failure failure)? failure,
@@ -1017,6 +1243,7 @@ class _$_Failure implements _Failure {
     required TResult Function(_Authenticating value) authenticating,
     required TResult Function(_Unauthenticated value) unauthenticated,
     required TResult Function(_Authenticated value) authenticated,
+    required TResult Function(_AuthenticatedUser value) authenticatedUser,
     required TResult Function(_SavedUser value) savedUser,
     required TResult Function(_SignedOut value) signedOut,
     required TResult Function(_Failure value) failure,
@@ -1031,6 +1258,7 @@ class _$_Failure implements _Failure {
     TResult? Function(_Authenticating value)? authenticating,
     TResult? Function(_Unauthenticated value)? unauthenticated,
     TResult? Function(_Authenticated value)? authenticated,
+    TResult? Function(_AuthenticatedUser value)? authenticatedUser,
     TResult? Function(_SavedUser value)? savedUser,
     TResult? Function(_SignedOut value)? signedOut,
     TResult? Function(_Failure value)? failure,
@@ -1045,6 +1273,7 @@ class _$_Failure implements _Failure {
     TResult Function(_Authenticating value)? authenticating,
     TResult Function(_Unauthenticated value)? unauthenticated,
     TResult Function(_Authenticated value)? authenticated,
+    TResult Function(_AuthenticatedUser value)? authenticatedUser,
     TResult Function(_SavedUser value)? savedUser,
     TResult Function(_SignedOut value)? signedOut,
     TResult Function(_Failure value)? failure,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
-import 'package:dartz/dartz.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -10,13 +9,6 @@ import 'package:go_router/go_router.dart';
 import 'package:lisa_app/common/routes/router.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/main/app_environment.dart';
-
-final FutureProvider<Unit> initializationProvider =
-    FutureProvider<Unit>((FutureProviderRef<Unit> ref) async {
-  final AuthNotifier authNotifier = ref.read(authNotifierProvider.notifier);
-  await authNotifier.checkIfAuthenticated();
-  return unit;
-});
 
 class MainApp extends ConsumerWidget {
   const MainApp({super.key});

@@ -8,7 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class SecureStorageAuthDataSource extends StateNotifier<AuthState>
     implements IAuthLocalDataSource {
   SecureStorageAuthDataSource({required this.ref})
-      : super(const AuthState.initial());
+      : super(const AuthState.authenticated());
 
   static const String _uidKey = 'uid';
   static const String _emailKey = 'email';
@@ -43,19 +43,22 @@ class SecureStorageAuthDataSource extends StateNotifier<AuthState>
   @override
   Future<UserCredentials> getUserCredentials() async {
     try {
-      final Future<String?> uid = ref.watch(storageDatabase).read(key: _uidKey);
-      final Future<String?> email =
-          ref.watch(storageDatabase).read(key: _emailKey);
-      final Future<String?> name =
-          ref.watch(storageDatabase).read(key: _nameKey);
-      final Future<String?> photo =
-          ref.watch(storageDatabase).read(key: _photoKey);
+      state = const AuthState.authenticated();
+      final String? uid = await ref.watch(storageDatabase).read(key: _uidKey);
+      final String? email =
+          await ref.watch(storageDatabase).read(key: _emailKey);
+      final String? name = await ref.watch(storageDatabase).read(key: _nameKey);
+      final String? photo =
+          await ref.watch(storageDatabase).read(key: _photoKey);
 
-      return UserCredentials(
+      UserCredentials user = UserCredentials(
           uid: uid.toString(),
           email: email.toString(),
           name: name.toString(),
           photo: photo.toString());
+
+      state = AuthState.authenticatedUser(user: user);
+      return user;
     } on Exception {
       throw AuthLocalDataSourceException();
     }

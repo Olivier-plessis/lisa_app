@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
 import 'package:lisa_app/common/utils/string_formater.dart';
 import 'package:lisa_app/generated/locale_keys.g.dart';
 import 'package:lisa_app/generated/resources.dart';
@@ -107,7 +105,9 @@ class SignPage extends ConsumerWidget {
                   height: 38.0.h,
                 ),
                 ATextHeadlineTwo(
-                    content: LocaleKeys.authenticate_you.tr().toCapitalized()),
+                        content:
+                            LocaleKeys.authenticate_you.tr().toCapitalized())
+                    .paddedLR(24.0),
                 const Gap(100.0),
                 MSocialButton(
                   label: 'Sign with google',

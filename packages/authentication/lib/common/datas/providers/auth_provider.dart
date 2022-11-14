@@ -1,16 +1,16 @@
-import 'package:app_authentication/common/domain/notifier/auth_notifier.dart';
-import 'package:app_authentication/common/utils/network_info.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-
-import 'package:app_authentication/common/datas/states/state.dart';
 import 'package:app_authentication/common/datas/datasources/datasources.dart';
 import 'package:app_authentication/common/datas/interfaces/interfaces.dart';
 import 'package:app_authentication/common/datas/providers/current_user_provider.dart';
 import 'package:app_authentication/common/datas/repositories/repositories.dart';
+import 'package:app_authentication/common/datas/states/state.dart';
+import 'package:app_authentication/common/domain/notifier/auth_notifier.dart';
+import 'package:app_authentication/common/utils/network_info.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 final Provider<FlutterSecureStorage> storageDatabase =
     Provider<FlutterSecureStorage>((ProviderRef<FlutterSecureStorage> ref) =>
@@ -61,6 +61,13 @@ final Provider<FirebaseUserRepository> userRepositoryProvider =
   ),
 );
 
+final FutureProvider<Unit> initializationProvider =
+    FutureProvider<Unit>((FutureProviderRef<Unit> ref) async {
+  final AuthNotifier authNotifier = ref.read(authNotifierProvider.notifier);
+  await authNotifier.checkIfAuthenticated();
+  return unit;
+});
+
 final StateNotifierProvider<AuthNotifier, AuthState> authNotifierProvider =
     StateNotifierProvider<AuthNotifier, AuthState>(
   (StateNotifierProviderRef<AuthNotifier, AuthState> ref) => AuthNotifier(
@@ -69,3 +76,18 @@ final StateNotifierProvider<AuthNotifier, AuthState> authNotifierProvider =
     ref.watch(userRepositoryProvider),
   ),
 );
+
+final FutureProvider<Unit> initializationCurrentUserProvider =
+    FutureProvider<Unit>((FutureProviderRef<Unit> ref) async {
+  final SecureStorageAuthDataSource secureStorageNotifier =
+      ref.read(authUserProvider.notifier);
+  await secureStorageNotifier.getUserCredentials();
+  return unit;
+});
+
+final StateNotifierProvider<SecureStorageAuthDataSource, AuthState>
+    authUserProvider =
+    StateNotifierProvider<SecureStorageAuthDataSource, AuthState>(
+        (StateNotifierProviderRef<SecureStorageAuthDataSource, AuthState>
+                ref) =>
+            SecureStorageAuthDataSource(ref: ref));
