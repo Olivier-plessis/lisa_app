@@ -24,8 +24,8 @@ extension _EnvProperties on AppEnvironment {
 
   static const Map<AppEnvironment, String> _connectionStrings =
       <AppEnvironment, String>{
-    AppEnvironment.DEV: 'https://www.googleapis.com/books/v1/',
-    AppEnvironment.PROD: 'https://www.googleapis.com/books/v1/',
+    AppEnvironment.DEV: 'https://www.googleapis.com/books/v1/volumes',
+    AppEnvironment.PROD: 'https://www.googleapis.com/books/v1/volumes',
   };
 
   static const Map<AppEnvironment, String> _envs = <AppEnvironment, String>{

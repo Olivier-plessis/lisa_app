@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:lisa_app/common/domain/models/book/items.dart';
+import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
+import 'package:lisa_app/presentation/pages/favorite/favorite_detail_page.dart';
 import 'package:lisa_app/presentation/pages/favorite/favorite_page.dart';
 import 'package:lisa_app/presentation/pages/home/home_page.dart';
 import 'package:lisa_app/presentation/pages/profile/profile_page.dart';
 import 'package:lisa_app/presentation/pages/reading/reading_page.dart';
+import 'package:lisa_app/presentation/pages/search/search_details_page.dart';
 import 'package:lisa_app/presentation/pages/search/search_page.dart';
 import 'package:lisa_app/presentation/pages/sign/sign_page.dart';
 import 'package:lisa_app/presentation/pages/splash/splash_page.dart';
@@ -63,6 +67,19 @@ class RouterNotifier extends ChangeNotifier {
             key: state.pageKey,
             child: const SearchPage(),
           ),
+          routes: [
+            GoRoute(
+              path: ':id',
+              pageBuilder: (BuildContext context, GoRouterState state) {
+                final String id = state.params['id']!;
+                final Items? item = state.extra as Items?;
+                return MaterialPage<dynamic>(
+                  key: state.pageKey,
+                  child: SearchDetailsPage(itemId: id, item: item),
+                );
+              },
+            )
+          ],
         ),
         ShellRoute(
           navigatorKey: _shellNavigatorKey,
@@ -85,6 +102,20 @@ class RouterNotifier extends ChangeNotifier {
                 key: state.pageKey,
                 child: const FavoritePage(),
               ),
+              routes: [
+                GoRoute(
+                  path: ':id',
+                  pageBuilder: (BuildContext context, GoRouterState state) {
+                    final String id = state.params['id']!;
+                    final SingleBook? singleBook = state.extra as SingleBook?;
+                    return MaterialPage<dynamic>(
+                      key: state.pageKey,
+                      child: FavoriteDetailsPage(
+                          singleBookId: id, singleBook: singleBook),
+                    );
+                  },
+                )
+              ],
             ),
             GoRoute(
               name: AppPage.reading.routeName,
