@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lisa_app/common/datas/repositories/book_repository.dart';
 import 'package:lisa_app/common/domain/models/book/book.dart';
-import 'package:lisa_app/common/domain/state/book_state.dart';
+import 'package:lisa_app/common/domain/state/book/book_state.dart';
 
 class BookNotifier extends StateNotifier<BookState> {
   BookNotifier(this._bookRepository) : super(const BookState.loading()) {

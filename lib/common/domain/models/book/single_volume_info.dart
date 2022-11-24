@@ -23,6 +23,8 @@ class SingleVolumeInfo with _$SingleVolumeInfo {
         String description,
     @Default(0)
         int pageCount,
+    @Default([])
+        List<String> categories,
     @Default(0.0)
         double averageRating,
     @JsonKey(

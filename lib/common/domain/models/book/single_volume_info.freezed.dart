@@ -27,6 +27,7 @@ mixin _$SingleVolumeInfo {
   String get publishedDate => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   int get pageCount => throw _privateConstructorUsedError;
+  List<String> get categories => throw _privateConstructorUsedError;
   double get averageRating => throw _privateConstructorUsedError;
   @JsonKey(
       fromJson: SingleVolumeInfo._imageLinksFromJson,
@@ -53,6 +54,7 @@ abstract class $SingleVolumeInfoCopyWith<$Res> {
       String publishedDate,
       String description,
       int pageCount,
+      List<String> categories,
       double averageRating,
       @JsonKey(fromJson: SingleVolumeInfo._imageLinksFromJson, toJson: SingleVolumeInfo._imageLinksToJson)
           ImageLinks? imageLinks});
@@ -80,6 +82,7 @@ class _$SingleVolumeInfoCopyWithImpl<$Res, $Val extends SingleVolumeInfo>
     Object? publishedDate = null,
     Object? description = null,
     Object? pageCount = null,
+    Object? categories = null,
     Object? averageRating = null,
     Object? imageLinks = freezed,
   }) {
@@ -112,6 +115,10 @@ class _$SingleVolumeInfoCopyWithImpl<$Res, $Val extends SingleVolumeInfo>
           ? _value.pageCount
           : pageCount // ignore: cast_nullable_to_non_nullable
               as int,
+      categories: null == categories
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       averageRating: null == averageRating
           ? _value.averageRating
           : averageRating // ignore: cast_nullable_to_non_nullable
@@ -152,6 +159,7 @@ abstract class _$$_SingleVolumeInfoCopyWith<$Res>
       String publishedDate,
       String description,
       int pageCount,
+      List<String> categories,
       double averageRating,
       @JsonKey(fromJson: SingleVolumeInfo._imageLinksFromJson, toJson: SingleVolumeInfo._imageLinksToJson)
           ImageLinks? imageLinks});
@@ -178,6 +186,7 @@ class __$$_SingleVolumeInfoCopyWithImpl<$Res>
     Object? publishedDate = null,
     Object? description = null,
     Object? pageCount = null,
+    Object? categories = null,
     Object? averageRating = null,
     Object? imageLinks = freezed,
   }) {
@@ -210,6 +219,10 @@ class __$$_SingleVolumeInfoCopyWithImpl<$Res>
           ? _value.pageCount
           : pageCount // ignore: cast_nullable_to_non_nullable
               as int,
+      categories: null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       averageRating: null == averageRating
           ? _value.averageRating
           : averageRating // ignore: cast_nullable_to_non_nullable
@@ -233,10 +246,12 @@ class _$_SingleVolumeInfo implements _SingleVolumeInfo {
       this.publishedDate = '',
       this.description = '',
       this.pageCount = 0,
+      final List<String> categories = const [],
       this.averageRating = 0.0,
       @JsonKey(fromJson: SingleVolumeInfo._imageLinksFromJson, toJson: SingleVolumeInfo._imageLinksToJson)
           this.imageLinks})
-      : _authors = authors;
+      : _authors = authors,
+        _categories = categories;
 
   factory _$_SingleVolumeInfo.fromJson(Map<String, dynamic> json) =>
       _$$_SingleVolumeInfoFromJson(json);
@@ -267,6 +282,14 @@ class _$_SingleVolumeInfo implements _SingleVolumeInfo {
   @override
   @JsonKey()
   final int pageCount;
+  final List<String> _categories;
+  @override
+  @JsonKey()
+  List<String> get categories {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
+
   @override
   @JsonKey()
   final double averageRating;
@@ -278,7 +301,7 @@ class _$_SingleVolumeInfo implements _SingleVolumeInfo {
 
   @override
   String toString() {
-    return 'SingleVolumeInfo(title: $title, subtitle: $subtitle, authors: $authors, publisher: $publisher, publishedDate: $publishedDate, description: $description, pageCount: $pageCount, averageRating: $averageRating, imageLinks: $imageLinks)';
+    return 'SingleVolumeInfo(title: $title, subtitle: $subtitle, authors: $authors, publisher: $publisher, publishedDate: $publishedDate, description: $description, pageCount: $pageCount, categories: $categories, averageRating: $averageRating, imageLinks: $imageLinks)';
   }
 
   @override
@@ -298,6 +321,8 @@ class _$_SingleVolumeInfo implements _SingleVolumeInfo {
                 other.description == description) &&
             (identical(other.pageCount, pageCount) ||
                 other.pageCount == pageCount) &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories) &&
             (identical(other.averageRating, averageRating) ||
                 other.averageRating == averageRating) &&
             (identical(other.imageLinks, imageLinks) ||
@@ -315,6 +340,7 @@ class _$_SingleVolumeInfo implements _SingleVolumeInfo {
       publishedDate,
       description,
       pageCount,
+      const DeepCollectionEquality().hash(_categories),
       averageRating,
       imageLinks);
 
@@ -341,6 +367,7 @@ abstract class _SingleVolumeInfo implements SingleVolumeInfo {
       final String publishedDate,
       final String description,
       final int pageCount,
+      final List<String> categories,
       final double averageRating,
       @JsonKey(fromJson: SingleVolumeInfo._imageLinksFromJson, toJson: SingleVolumeInfo._imageLinksToJson)
           final ImageLinks? imageLinks}) = _$_SingleVolumeInfo;
@@ -362,6 +389,8 @@ abstract class _SingleVolumeInfo implements SingleVolumeInfo {
   String get description;
   @override
   int get pageCount;
+  @override
+  List<String> get categories;
   @override
   double get averageRating;
   @override

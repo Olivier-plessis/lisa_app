@@ -7,10 +7,14 @@ class BookPoster extends StatelessWidget {
   const BookPoster({
     super.key,
     this.imagePath,
+    this.width = 90.0,
+    this.height = 125.0,
+    this.borderRadius = const BorderRadius.all(Radius.circular(10)),
   });
   final String? imagePath;
-  static const double width = 90.0;
-  static const double height = 125.0;
+  final double? width;
+  final double? height;
+  final BorderRadius borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class BookPoster extends StatelessWidget {
                 offset: const Offset(0, 2), // changes position of shadow
               ),
             ],
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            borderRadius: borderRadius,
             image: DecorationImage(
               image: imageProvider,
               fit: BoxFit.cover,

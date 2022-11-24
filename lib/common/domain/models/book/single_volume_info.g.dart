@@ -18,6 +18,10 @@ _$_SingleVolumeInfo _$$_SingleVolumeInfoFromJson(Map<String, dynamic> json) =>
       publishedDate: json['publishedDate'] as String? ?? '',
       description: json['description'] as String? ?? '',
       pageCount: json['pageCount'] as int? ?? 0,
+      categories: (json['categories'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
       averageRating: (json['averageRating'] as num?)?.toDouble() ?? 0.0,
       imageLinks: SingleVolumeInfo._imageLinksFromJson(
           json['imageLinks'] as Map<String, dynamic>?),
@@ -32,6 +36,7 @@ Map<String, dynamic> _$$_SingleVolumeInfoToJson(_$_SingleVolumeInfo instance) =>
       'publishedDate': instance.publishedDate,
       'description': instance.description,
       'pageCount': instance.pageCount,
+      'categories': instance.categories,
       'averageRating': instance.averageRating,
       'imageLinks': SingleVolumeInfo._imageLinksToJson(instance.imageLinks),
     };

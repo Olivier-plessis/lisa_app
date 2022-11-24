@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:app_authentication/common/domain/states/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:lisa_app/common/datas/repositories/favorite_repository.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';

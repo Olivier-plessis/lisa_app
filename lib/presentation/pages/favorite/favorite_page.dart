@@ -1,29 +1,58 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
-import 'package:lisa_app/presentation/widgets/book_poster_widget.dart';
+import 'package:lisa_app/presentation/widgets/book/book_card.dart';
+import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
+import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
 
 class FavoritePage extends StatelessWidget {
   const FavoritePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: const Scaffold(
-        backgroundColor: ColorTheme.tertiaryColor,
-        body: CustomScrollView(
-            physics: ClampingScrollPhysics(),
-            slivers: <Widget>[
-              _FavoritesList(),
-            ]),
+    final Size size = MediaQuery.of(context).size;
+    return CustomScrollView(physics: ClampingScrollPhysics(), slivers: <Widget>[
+      SliverAppBar(
+        backgroundColor: Colors.transparent,
+        expandedHeight: 184.0,
+        flexibleSpace: FlexibleSpaceBar(
+          centerTitle: true,
+          titlePadding: const EdgeInsets.only(top: 10),
+          title: Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.only(
+                  top: size.height * .12,
+                  left: size.width * .1,
+                  right: size.width * .02),
+              height: size.height * .48,
+              decoration: const BoxDecoration(
+                color: ColorTheme.orangeLightColor,
+                // image: DecorationImage(
+                //   image: AssetImage(Images.bg),
+                //   fit: BoxFit.fitWidth,
+                // ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
+              child: BookSliverAppBar(
+                size: size,
+                title: 'My favorite list &',
+                subtitle: 'Blabla',
+              )),
+        ),
       ),
-    );
+      _FavoritesList(),
+    ]);
   }
 }
 
@@ -46,9 +75,9 @@ class _FavoritesList extends ConsumerWidget {
                         AppBar().preferredSize.height -
                         kBottomNavigationBarHeight -
                         kToolbarHeight,
-                    child: Padding(
-                      padding: const EdgeInsets.all(58.0),
-                      child: const Center(
+                    child: const Padding(
+                      padding: EdgeInsets.all(58.0),
+                      child: Center(
                         child: Text(
                           "You haven't added anything to favorites",
                           style: TextStyle(color: Colors.red),
@@ -57,8 +86,9 @@ class _FavoritesList extends ConsumerWidget {
                     ),
                   ),
                   loading: (_) => const CircularProgressIndicator(),
-                  loaded: (_) => BookList(
+                  loaded: (_) => _BookListCard(
                     singlebooks: singleBooks,
+                    ref: ref,
                   ),
                 )
         ],
@@ -67,12 +97,14 @@ class _FavoritesList extends ConsumerWidget {
   }
 }
 
-class BookList extends StatelessWidget {
-  const BookList({
+class _BookListCard extends StatelessWidget {
+  const _BookListCard({
     super.key,
     required this.singlebooks,
+    required this.ref,
   });
   final List<SingleBook> singlebooks;
+  final WidgetRef ref;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -87,12 +119,24 @@ class BookList extends StatelessWidget {
             },
             itemBuilder: (BuildContext context, int index) {
               final SingleBook item = singlebooks[index];
-              return _BookCard(
+              return _FavoriteListCard(
                 item: item,
-                onPressed: () => context.go(
+                pressDetail: () => context.go(
                   '${AppPage.favorite.routePath}/${item.id}',
                   extra: item,
                 ),
+                pressRead: () {
+                  ref
+                      .read(favoriteNotifierProvider.notifier)
+                      .removeFromFavorites(book: item);
+                  ref
+                      .read(readingNotifierProvider.notifier)
+                      .addBookToReadingList(book: item);
+                  context.go(
+                    '${AppPage.reading.routePath}/${item.id}',
+                    extra: item,
+                  );
+                },
               );
             }),
       ],
@@ -100,87 +144,26 @@ class BookList extends StatelessWidget {
   }
 }
 
-class _BookCard extends StatelessWidget {
-  const _BookCard({
+class _FavoriteListCard extends StatelessWidget {
+  const _FavoriteListCard({
     required this.item,
-    this.onPressed,
+    required this.pressDetail,
+    required this.pressRead,
   });
   final SingleBook item;
-  final VoidCallback? onPressed;
+  final Function() pressDetail;
+  final Function() pressRead;
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: const BoxDecoration(
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Color.fromRGBO(0, 18, 33, 0.08),
-            blurRadius: 10,
-            offset: Offset(3, 6),
-          )
-        ],
-      ),
-      child: Material(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(
-            16,
-          ),
-        ),
-        color: Colors.white,
-        child: InkWell(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(
-              8,
-            ),
-          ),
-          onTap: onPressed,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Flexible(
-                flex: 3,
-                child: Transform.translate(
-                  offset: const Offset(0, -22),
-                  child: BookPoster(
-                      imagePath: item.volumeInfo?.imageLinks?.medium),
-                ),
-              ),
-              Flexible(
-                  flex: 6,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        ATextHeadlineFive(content: item.volumeInfo!.title),
-                        if (item.volumeInfo!.authors.isNotEmpty)
-                          ATextHeadlineSix(
-                              content: item.volumeInfo!.authors!.first)
-                        else
-                          const SizedBox.shrink(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Container(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 18.0),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: ColorTheme.secondaryColor),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: const Text('Discovered')),
-                          ],
-                        )
-                      ],
-                    ).paddedL(12.0),
-                  ))
-            ],
-          ),
-        ),
-      ),
+    return BookCard(
+      title: item.volumeInfo!.title,
+      auth: item.volumeInfo!.authors.first,
+      image: '${item.volumeInfo?.imageLinks?.medium}',
+      pressRead: pressRead,
+      watchDetail: true,
+      pressDetail: pressDetail,
+      buttonLabel: 'Add to reading list',
     );
   }
 }

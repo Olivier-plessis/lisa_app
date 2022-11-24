@@ -51,7 +51,7 @@ class _SearchBarState extends ConsumerState<BooksSearchBar> {
             isDense: true,
             hintText: 'Search book',
             hintStyle: textTheme.subtitle2!.copyWith(
-                color: ColorTheme.greyColor,
+                color: ColorTheme.bodyTextColor,
                 fontSize: 10,
                 fontWeight: FontWeightTheme.medium),
             prefixIcon: IconButton(

@@ -12,11 +12,13 @@ import 'package:lisa_app/presentation/pages/favorite/favorite_detail_page.dart';
 import 'package:lisa_app/presentation/pages/favorite/favorite_page.dart';
 import 'package:lisa_app/presentation/pages/home/home_page.dart';
 import 'package:lisa_app/presentation/pages/profile/profile_page.dart';
+import 'package:lisa_app/presentation/pages/reading/reading_detail_page.dart';
 import 'package:lisa_app/presentation/pages/reading/reading_page.dart';
 import 'package:lisa_app/presentation/pages/search/search_details_page.dart';
 import 'package:lisa_app/presentation/pages/search/search_page.dart';
 import 'package:lisa_app/presentation/pages/sign/sign_page.dart';
 import 'package:lisa_app/presentation/pages/splash/splash_page.dart';
+import 'package:lisa_app/presentation/scaffold/main_scaffold_screen.dart';
 import 'package:lisa_app/presentation/scaffold/scaffold_with_navbar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
@@ -45,7 +47,7 @@ class GoRouterRefreshStream extends ChangeNotifier {
 
 final Provider<GoRouter> routerProvider =
     Provider<GoRouter>((ProviderRef<GoRouter> ref) {
-  final RouterNotifier router = RouterNotifier(ref);
+  final RouterNotifier router = RouterNotifier();
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
@@ -55,9 +57,7 @@ final Provider<GoRouter> routerProvider =
 });
 
 class RouterNotifier extends ChangeNotifier {
-  RouterNotifier(this._ref);
-
-  final Ref _ref;
+  RouterNotifier();
 
   List<RouteBase> get _routes => <RouteBase>[
         GoRoute(
@@ -65,7 +65,9 @@ class RouterNotifier extends ChangeNotifier {
           path: AppPage.search.routePath,
           pageBuilder: (_, GoRouterState state) => NoTransitionPage<void>(
             key: state.pageKey,
-            child: const SearchPage(),
+            child: const MainScaffoldScreen(
+              child: SearchPage(),
+            ),
           ),
           routes: [
             GoRoute(
@@ -75,7 +77,9 @@ class RouterNotifier extends ChangeNotifier {
                 final Items? item = state.extra as Items?;
                 return MaterialPage<dynamic>(
                   key: state.pageKey,
-                  child: SearchDetailsPage(itemId: id, item: item),
+                  child: MainScaffoldScreen(
+                    child: SearchDetailsPage(itemId: id, item: item),
+                  ),
                 );
               },
             )
@@ -99,9 +103,10 @@ class RouterNotifier extends ChangeNotifier {
               name: AppPage.favorite.routeName,
               path: AppPage.favorite.routePath,
               pageBuilder: (_, GoRouterState state) => NoTransitionPage<void>(
-                key: state.pageKey,
-                child: const FavoritePage(),
-              ),
+                  key: state.pageKey,
+                  child: const MainScaffoldScreen(
+                    child: FavoritePage(),
+                  )),
               routes: [
                 GoRoute(
                   path: ':id',
@@ -110,8 +115,10 @@ class RouterNotifier extends ChangeNotifier {
                     final SingleBook? singleBook = state.extra as SingleBook?;
                     return MaterialPage<dynamic>(
                       key: state.pageKey,
-                      child: FavoriteDetailsPage(
-                          singleBookId: id, singleBook: singleBook),
+                      child: MainScaffoldScreen(
+                        child: FavoriteDetailsPage(
+                            singleBookId: id, singleBook: singleBook),
+                      ),
                     );
                   },
                 )
@@ -122,8 +129,26 @@ class RouterNotifier extends ChangeNotifier {
               path: AppPage.reading.routePath,
               pageBuilder: (_, GoRouterState state) => NoTransitionPage<void>(
                 key: state.pageKey,
-                child: const ReadingPage(),
+                child: const MainScaffoldScreen(
+                  child: ReadingPage(),
+                ),
               ),
+              routes: [
+                GoRoute(
+                  path: ':id',
+                  pageBuilder: (BuildContext context, GoRouterState state) {
+                    final String id = state.params['id']!;
+                    final SingleBook? singleBook = state.extra as SingleBook?;
+                    return MaterialPage<dynamic>(
+                      key: state.pageKey,
+                      child: MainScaffoldScreen(
+                        child: ReadingDetailsPage(
+                            singleBookId: id, singleBook: singleBook),
+                      ),
+                    );
+                  },
+                )
+              ],
             ),
             GoRoute(
               name: AppPage.profile.routeName,

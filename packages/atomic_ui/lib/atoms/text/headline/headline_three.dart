@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
 class ATextHeadlineThree extends StatelessWidget {
@@ -10,8 +11,7 @@ class ATextHeadlineThree extends StatelessWidget {
     TextTheme textTheme = Theme.of(context).textTheme;
     return Text(
       content,
-      style: textTheme.headline3!
-          .copyWith(color: Theme.of(context).colorScheme.primary),
+      style: textTheme.headline3!.copyWith(color: ColorTheme.secondaryColor),
     );
   }
 }

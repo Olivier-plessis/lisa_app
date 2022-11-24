@@ -33,7 +33,7 @@ class LisaBottomNavigation extends StatelessWidget {
     final double height = this.height ?? getRelativeHeight(0.076);
 
     return SizedBox(
-      height: height + getRelativeHeight(0.035),
+      height: height + getRelativeHeight(0),
       child: Stack(
         children: <Widget>[
           Align(
@@ -159,40 +159,43 @@ class LisaBottomNavigation extends StatelessWidget {
           Positioned.fill(
             child: Align(
               alignment: Alignment.topCenter,
-              child: Transform.rotate(
-                angle: -math.pi / 4,
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {
-                      onItemPressed(itemIcons.length == 4 ? 2 : 1);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            width: 5.0, color: ColorTheme.tertiaryColor),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50)),
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: <Color>[
-                            selectedLightColor,
-                            selectedColor,
-                          ],
+              child: Transform.translate(
+                offset: const Offset(0, -30),
+                child: Transform.rotate(
+                  angle: -math.pi / 4,
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        onItemPressed(itemIcons.length == 4 ? 2 : 1);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 5.0, color: ColorTheme.tertiaryColor),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50)),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: <Color>[
+                              selectedLightColor,
+                              selectedColor,
+                            ],
+                          ),
                         ),
+                        height: getSearchSize(),
+                        width: getSearchSize(),
+                        child: Center(
+                            child: Transform.rotate(
+                          angle: math.pi / 4,
+                          child: Icon(
+                            centerIcon,
+                            color: ColorTheme.tertiaryColor,
+                            size: 30,
+                          ),
+                        )),
                       ),
-                      height: getSearchSize(),
-                      width: getSearchSize(),
-                      child: Center(
-                          child: Transform.rotate(
-                        angle: math.pi / 4,
-                        child: Icon(
-                          centerIcon,
-                          color: ColorTheme.tertiaryColor,
-                          size: 30,
-                        ),
-                      )),
                     ),
                   ),
                 ),

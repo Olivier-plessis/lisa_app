@@ -13,7 +13,7 @@ class ATextHeadlineSix extends StatelessWidget {
       content,
       style: textTheme.headline6!.copyWith(
           color: ColorTheme.orangeColor,
-          fontSize: FontSizeTheme.bodyMedium.toDouble()),
+          fontSize: FontSizeTheme.bodyLight.toDouble()),
     );
   }
 }

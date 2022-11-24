@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lisa_app/common/datas/repositories/book_repository.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/single_book_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_state.dart';
 
 class SingleBookNotifier extends StateNotifier<SingleBookState> {
   SingleBookNotifier(

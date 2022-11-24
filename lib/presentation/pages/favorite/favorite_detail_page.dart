@@ -1,15 +1,20 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/single_book_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_state.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/common/utils/string_formater.dart';
-import 'package:lisa_app/presentation/widgets/book_poster_widget.dart';
+import 'package:lisa_app/presentation/widgets/book/book_description.dart';
+import 'package:lisa_app/presentation/widgets/book/book_header.dart';
+import 'package:lisa_app/presentation/widgets/book/book_page_categories.dart';
+import 'package:lisa_app/presentation/widgets/book/book_poster_details.dart';
+import 'package:lisa_app/presentation/widgets/expandable_text.dart';
 
 class FavoriteDetailsPage extends ConsumerWidget {
   const FavoriteDetailsPage(
@@ -22,62 +27,76 @@ class FavoriteDetailsPage extends ConsumerWidget {
     final SingleBookState favoriteBook =
         ref.watch(singleBookFamilyProvider(singleBookId));
 
-    return Scaffold(
-      backgroundColor: ColorTheme.tertiaryColor,
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: Colors.transparent,
-            leading: InkWell(
-              child: const Icon(
-                Icons.chevron_left,
-                color: ColorTheme.secondaryColor,
-              ),
-              onTap: () => context.goNamed(AppPage.favorite.routeName),
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          backgroundColor: Colors.transparent,
+          leading: InkWell(
+            child: const Icon(
+              Icons.chevron_left,
+              color: ColorTheme.secondaryColor,
             ),
-            title: const ATextHeadlineFive(
-              content: 'Favorite book detail',
-            ),
-            expandedHeight: 140.0,
+            onTap: () => context.goNamed(AppPage.favorite.routeName),
           ),
-          SliverToBoxAdapter(
-            child: favoriteBook.whenOrNull(
-              loading: () => Column(
-                children: [
-                  const Center(
-                    child: CircularProgressIndicator.adaptive(
-                      strokeWidth: 10,
-                      backgroundColor: ColorTheme.failureRed,
+          title: const ATextHeadlineFive(
+            content: 'Favorite book detail',
+          ),
+          expandedHeight: 64.0,
+        ),
+        SliverToBoxAdapter(
+          child: favoriteBook.whenOrNull(
+            loaded: (SingleBook book) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    BookHeader(
+                      title: '${book.volumeInfo?.title}',
+                      authors: book.volumeInfo!.authors.first,
+                      publisher: '${book.volumeInfo?.publisher}',
+                      publishedDate: '${book.volumeInfo?.publishedDate}',
                     ),
-                  ).paddedV(100),
-                ],
-              ),
-              loaded: (SingleBook book) {
-                return SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      BookPoster(
-                          imagePath: book.volumeInfo?.imageLinks?.medium),
-                      Text(book.volumeInfo!.authors!.first),
-                      Text('${book.volumeInfo?.title}'),
-                      ElevatedButton(
-                          onPressed: () {
-                            ref
-                                .read(favoriteNotifierProvider.notifier)
-                                .removeFromFavorites(book: book);
-                            context.goNamed(AppPage.favorite.routeName);
-                          },
-                          child: Text('remove to favourite')),
-                      Text(Utilities.removeAllHtmlTags(
-                          book.volumeInfo!.description.toString())),
-                    ],
-                  ),
-                );
-              },
-            ),
-          )
-        ],
-      ),
+                    const Gap(20.0),
+                    BookPosterDetails(
+                      imageLink: '${book.volumeInfo?.imageLinks?.medium}',
+                      deleteTo: true,
+                      deleteButtonLeftPosition: 130,
+                      onTapDelete: () {
+                        ref
+                            .read(favoriteNotifierProvider.notifier)
+                            .removeFromFavorites(book: book);
+                        context.goNamed(AppPage.favorite.routeName);
+                      },
+                      onTapButton: () {
+                        ref
+                            .read(favoriteNotifierProvider.notifier)
+                            .removeFromFavorites(book: book);
+
+                        ref
+                            .read(readingNotifierProvider.notifier)
+                            .addBookToReadingList(book: book);
+
+                        context.go(
+                          '${AppPage.reading.routePath}/${book.id}',
+                          extra: book,
+                        );
+                      },
+                      buttonText: 'add to reading list',
+                    ),
+                    BookPageCategories(
+                      pageCount: '${book.volumeInfo?.pageCount}',
+                      categories: '${book.volumeInfo?.categories.first}',
+                    ),
+                    BookDescription(
+                      description: book.volumeInfo!.description,
+                    ),
+                    const Gap(40.0),
+                  ],
+                ),
+              );
+            },
+          ),
+        )
+      ],
     );
   }
 }
