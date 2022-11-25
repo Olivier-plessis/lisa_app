@@ -22,7 +22,6 @@ class SearchPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final BookState booksList = ref.watch(booksNotifierProvider);
     final Size size = MediaQuery.of(context).size;
     return CustomScrollView(
       slivers: [

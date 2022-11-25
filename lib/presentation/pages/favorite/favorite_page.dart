@@ -67,30 +67,29 @@ class _FavoritesList extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (singleBooks.isNotEmpty)
-            ref.watch<FavoriteListState>(favoriteListNotifierProvider).maybeMap(
-                  orElse: () => const SizedBox.shrink(),
-                  empty: (_) => SizedBox(
-                    height: MediaQuery.of(context).size.height -
-                        AppBar().preferredSize.height -
-                        kBottomNavigationBarHeight -
-                        kToolbarHeight,
-                    child: const Padding(
-                      padding: EdgeInsets.all(58.0),
-                      child: Center(
-                        child: Text(
-                          "You haven't added anything to favorites",
-                          style: TextStyle(color: Colors.red),
-                        ),
+          ref.watch<FavoriteListState>(favoriteListNotifierProvider).maybeMap(
+                orElse: () => const SizedBox.shrink(),
+                empty: (_) => SizedBox(
+                  height: MediaQuery.of(context).size.height -
+                      AppBar().preferredSize.height -
+                      kBottomNavigationBarHeight -
+                      kToolbarHeight,
+                  child: const Padding(
+                    padding: EdgeInsets.all(58.0),
+                    child: Center(
+                      child: Text(
+                        "You haven't added anything to favorites",
+                        style: TextStyle(color: Colors.red),
                       ),
                     ),
                   ),
-                  loading: (_) => const CircularProgressIndicator(),
-                  loaded: (_) => _BookListCard(
-                    singlebooks: singleBooks,
-                    ref: ref,
-                  ),
-                )
+                ),
+                loading: (_) => const CircularProgressIndicator(),
+                loaded: (_) => _BookListCard(
+                  singlebooks: singleBooks,
+                  ref: ref,
+                ),
+              )
         ],
       ),
     );

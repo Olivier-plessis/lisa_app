@@ -45,7 +45,7 @@ class _SearchBarState extends ConsumerState<BooksSearchBar> {
           cursorHeight: 16,
           cursorColor: secondaryColor,
           decoration: InputDecoration(
-            fillColor: Colors.transparent, //<-- SEE HERE
+            fillColor: ColorTheme.tertiaryColor,
             contentPadding: const EdgeInsets.symmetric(vertical: 3.0),
             border: InputBorder.none,
             isDense: true,

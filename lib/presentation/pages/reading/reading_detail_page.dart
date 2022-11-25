@@ -63,7 +63,7 @@ class ReadingDetailsPage extends ConsumerWidget {
                     const Gap(20.0),
                     BookPosterDetails(
                       imageLink: '${book.volumeInfo?.imageLinks?.medium}',
-                      onTapButton: () => print('test'),
+                      onTapButton: () {},
                       buttonText: 'start to read',
                       restoreToFavorite: true,
                       onTapToFavorite: () => {

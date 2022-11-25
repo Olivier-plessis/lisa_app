@@ -15,6 +15,8 @@ class BookCard extends StatelessWidget {
     this.watchDetail = false,
     required this.pressRead,
     this.buttonLabel = 'Read',
+    this.textWidth = 200,
+    this.positionActionButton = 37,
   });
 
   final String image;
@@ -24,11 +26,14 @@ class BookCard extends StatelessWidget {
   final Function()? pressDetail;
   final Function() pressRead;
   final String? buttonLabel;
+  final double textWidth;
+  final double positionActionButton;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 185,
+      width: 300,
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -77,7 +82,7 @@ class BookCard extends StatelessWidget {
                 children: <Widget>[
                   if (auth.isNotEmpty) ATextHeadlineSix(content: auth),
                   SizedBox(
-                    width: 200,
+                    width: textWidth,
                     height: 55,
                     child: Text(
                       title,
@@ -95,7 +100,7 @@ class BookCard extends StatelessWidget {
             top: 100,
             child: SizedBox(
               height: 85,
-              width: MediaQuery.of(context).size.width - 40,
+              width: MediaQuery.of(context).size.width - positionActionButton.w,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[

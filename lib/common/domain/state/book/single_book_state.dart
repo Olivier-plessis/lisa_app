@@ -10,5 +10,6 @@ class SingleBookState with _$SingleBookState {
   const factory SingleBookState.loading() = _Loading;
   const factory SingleBookState.loaded({required SingleBook singleBook}) =
       _Loaded;
+
   const factory SingleBookState.error({required String error}) = _Error;
 }

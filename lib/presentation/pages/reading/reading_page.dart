@@ -12,50 +12,52 @@ import 'package:lisa_app/presentation/widgets/book/book_card.dart';
 import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
 
 class ReadingPage extends StatelessWidget {
-  const ReadingPage({Key? key}) : super(key: key);
+  const ReadingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return CustomScrollView(physics: ClampingScrollPhysics(), slivers: <Widget>[
-      SliverAppBar(
-        backgroundColor: Colors.transparent,
-        expandedHeight: 184.0,
-        flexibleSpace: FlexibleSpaceBar(
-          centerTitle: true,
-          titlePadding: const EdgeInsets.only(top: 10),
-          title: Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.only(
-                  top: size.height * .12,
-                  left: size.width * .1,
-                  right: size.width * .02),
-              height: size.height * .48,
-              decoration: const BoxDecoration(
-                color: ColorTheme.orangeLightColor,
-                // image: DecorationImage(
-                //   image: AssetImage(Images.bg),
-                //   fit: BoxFit.fitWidth,
-                // ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: BookSliverAppBar(
-                size: size,
-                title: 'My reading list &',
-                subtitle: 'Blabla',
-              )),
-        ),
-      ),
-      _FavoritesList(),
-    ]);
+    return CustomScrollView(
+        physics: const ClampingScrollPhysics(),
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: Colors.transparent,
+            expandedHeight: 184.0,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              titlePadding: const EdgeInsets.only(top: 10),
+              title: Container(
+                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.only(
+                      top: size.height * .12,
+                      left: size.width * .1,
+                      right: size.width * .02),
+                  height: size.height * .48,
+                  decoration: const BoxDecoration(
+                    color: ColorTheme.orangeLightColor,
+                    // image: DecorationImage(
+                    //   image: AssetImage(Images.bg),
+                    //   fit: BoxFit.fitWidth,
+                    // ),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: BookSliverAppBar(
+                    size: size,
+                    title: 'My reading list &',
+                    subtitle: 'Blabla',
+                  )),
+            ),
+          ),
+          const _ReadingList(),
+        ]);
   }
 }
 
-class _FavoritesList extends ConsumerWidget {
-  const _FavoritesList();
+class _ReadingList extends ConsumerWidget {
+  const _ReadingList();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -142,50 +144,6 @@ class _BookListCard extends StatelessWidget {
       auth: item.volumeInfo!.authors.first,
       image: '${item.volumeInfo?.imageLinks?.medium}',
       pressRead: pressRead,
-    );
-  }
-}
-
-class BookInfo extends StatelessWidget {
-  const BookInfo({
-    super.key,
-    required this.size,
-  });
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Flex(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      direction: Axis.horizontal,
-      children: <Widget>[
-        Expanded(
-            child: Column(
-          children: <Widget>[
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text('My reading list &',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3!
-                      .copyWith(fontSize: FontSizeTheme.titleLight.toDouble())),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: size.height * .005),
-              alignment: Alignment.centerLeft,
-              padding: const EdgeInsets.only(top: 0),
-              child: Text(
-                'Blabla',
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6!
-                    .copyWith(fontSize: FontSizeTheme.titleLight.toDouble()),
-              ),
-            ),
-          ],
-        )),
-      ],
     );
   }
 }
