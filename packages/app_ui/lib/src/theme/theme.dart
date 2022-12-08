@@ -53,6 +53,8 @@ final ThemeData darkTheme = FlexThemeData.dark(
   appBarStyle: FlexAppBarStyle.background,
   appBarOpacity: 0.95,
   appBarBackground: ColorTheme.mainLightColor,
+  onBackground: ColorTheme.secondaryColor,
+  background: ColorTheme.secondaryColor,
   surfaceTint: const Color(0xfffef5dd),
   surface: ColorTheme.secondaryColor,
   subThemesData: const FlexSubThemesData(

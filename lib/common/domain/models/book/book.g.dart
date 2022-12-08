@@ -13,7 +13,7 @@ _$_Books _$$_BooksFromJson(Map<String, dynamic> json) => _$_Books(
     );
 
 Map<String, dynamic> _$$_BooksToJson(_$_Books instance) => <String, dynamic>{
-      'books': instance.books,
+      'books': instance.books?.map((e) => e.toJson()).toList(),
     };
 
 _$_Book _$$_BookFromJson(Map<String, dynamic> json) => _$_Book(
@@ -27,5 +27,5 @@ _$_Book _$$_BookFromJson(Map<String, dynamic> json) => _$_Book(
 Map<String, dynamic> _$$_BookToJson(_$_Book instance) => <String, dynamic>{
       'kind': instance.kind,
       'totalItems': instance.totalItems,
-      'items': instance.items,
+      'items': instance.items?.map((e) => e.toJson()).toList(),
     };

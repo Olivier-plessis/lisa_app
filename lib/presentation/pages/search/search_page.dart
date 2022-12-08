@@ -86,7 +86,21 @@ class _SearchList extends ConsumerWidget {
                   ),
                 ).paddedV(100),
               ),
-              error: (error) => Text('$error'),
+              error: (_) => SizedBox(
+                height: MediaQuery.of(context).size.height -
+                    AppBar().preferredSize.height -
+                    kBottomNavigationBarHeight -
+                    kToolbarHeight,
+                child: const Padding(
+                  padding: EdgeInsets.all(58.0),
+                  child: Center(
+                    child: Text(
+                      "Enter the title of the book and press enter to see the results of your search",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ),
+              ),
               loaded: (Book books) {
                 return SearchList(books: books);
               },

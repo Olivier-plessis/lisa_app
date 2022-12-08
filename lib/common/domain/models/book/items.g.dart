@@ -17,7 +17,7 @@ _$_Items _$$_ItemsFromJson(Map<String, dynamic> json) => _$_Items(
 Map<String, dynamic> _$$_ItemsToJson(_$_Items instance) => <String, dynamic>{
       'id': instance.id,
       'selfLink': instance.selfLink,
-      'volumeInfo': instance.volumeInfo,
+      'volumeInfo': instance.volumeInfo?.toJson(),
     };
 
 _$_VolumeInfo _$$_VolumeInfoFromJson(Map<String, dynamic> json) =>
@@ -50,7 +50,7 @@ Map<String, dynamic> _$$_VolumeInfoToJson(_$_VolumeInfo instance) =>
       'pageCount': instance.pageCount,
       'averageRating': instance.averageRating,
       'categories': instance.categories,
-      'imageLinks': instance.imageLinks,
+      'imageLinks': instance.imageLinks?.toJson(),
     };
 
 _$_ImageLinks _$$_ImageLinksFromJson(Map<String, dynamic> json) =>

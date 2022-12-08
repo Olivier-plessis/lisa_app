@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:lisa_app/common/datas/datasources/api_google_client.dart';
 import 'package:lisa_app/common/datas/datasources/favorite_data_sources.dart';
 import 'package:lisa_app/common/datas/datasources/reading_data_sources.dart';
@@ -18,12 +17,14 @@ import 'package:lisa_app/common/domain/notifier/favorite/favorite_list_notifier.
 import 'package:lisa_app/common/domain/notifier/favorite/favorite_notifier.dart';
 import 'package:lisa_app/common/domain/notifier/reading/reading_list_notifier.dart';
 import 'package:lisa_app/common/domain/notifier/reading/reading_notifier.dart';
+import 'package:lisa_app/common/domain/notifier/settings/settings_notifier.dart';
 import 'package:lisa_app/common/domain/state/book/book_state.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_state.dart';
 import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';
 import 'package:lisa_app/common/domain/state/favorite/favorite_state.dart';
 import 'package:lisa_app/common/domain/state/reading/reading_list_state.dart';
 import 'package:lisa_app/common/domain/state/reading/reading_state.dart';
+import 'package:lisa_app/common/domain/state/settings/settings_state.dart';
 import 'package:lisa_app/main/app_environment.dart';
 
 final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
@@ -40,6 +41,17 @@ final Provider<Dio> dioProvider = Provider<Dio>((ProviderRef<Dio> ref) {
 final Provider<ApiGoogleClient> apiClientProvider = Provider<ApiGoogleClient>(
     (ProviderRef<ApiGoogleClient> ref) =>
         ApiGoogleClient.createDefault(ref.watch(dioProvider)));
+
+//Settings
+
+final Provider<FlutterSecureStorage> storageDatabase =
+    Provider<FlutterSecureStorage>((ProviderRef<FlutterSecureStorage> ref) =>
+        const FlutterSecureStorage());
+
+final StateNotifierProvider<SettingsNotifier, SettingsState> lisaSettings =
+    StateNotifierProvider<SettingsNotifier, SettingsState>(
+        (StateNotifierProviderRef<SettingsNotifier, SettingsState> ref) =>
+            SettingsNotifier(ref));
 
 //Books
 final Provider<BookRepository> bookRepositoryProvider =

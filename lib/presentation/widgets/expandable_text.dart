@@ -1,7 +1,6 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import 'package:app_ui/app_ui.dart';
 
 class ExpandableText extends StatefulWidget {
   const ExpandableText(
@@ -26,7 +25,6 @@ class ExpandableTextState extends State<ExpandableText> {
   @override
   Widget build(BuildContext context) {
     const Color colorClickableText = ColorTheme.orangeColor;
-    const Color widgetColor = ColorTheme.bodyTextColor;
     final TextSpan link = TextSpan(
         text: _readMore ? '... read more' : ' read less',
         style: const TextStyle(
