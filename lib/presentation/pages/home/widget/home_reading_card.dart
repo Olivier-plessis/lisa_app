@@ -8,12 +8,18 @@ class HomeReadingCard extends StatelessWidget {
     super.key,
     required this.image,
     required this.title,
-    required this.auth,
+    required this.author,
+    this.percentage,
+    this.numberOfPageRead,
+    this.isStarted,
     required this.pressRead,
   });
   final String image;
   final String title;
-  final String auth;
+  final String author;
+  final String? percentage;
+  final int? numberOfPageRead;
+  final bool? isStarted;
   final Function() pressRead;
 
   @override
@@ -34,9 +40,9 @@ class HomeReadingCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(29),
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    offset: const Offset(0, 3),
-                    blurRadius: 5,
-                    color: ColorTheme.kShadowColor.withOpacity(.84),
+                    offset: const Offset(0, 6),
+                    blurRadius: 9,
+                    color: ColorTheme.kShadowColor.withOpacity(.94),
                   ),
                 ],
               ),
@@ -48,13 +54,26 @@ class HomeReadingCard extends StatelessWidget {
               imagePath: image,
             ),
           ),
-          Positioned(
-            top: 35,
-            right: 10,
-            child: Column(
-              children: const <Widget>[Text('85%')],
+          if (isStarted == true)
+            Positioned(
+              top: 25,
+              right: 15,
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  color: ColorTheme.mainGreenColor,
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      offset: const Offset(0, 3),
+                      blurRadius: 5,
+                      color: ColorTheme.kShadowColor.withOpacity(.84),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
           Positioned(
             top: 130,
             child: SizedBox(
@@ -77,7 +96,7 @@ class HomeReadingCard extends StatelessWidget {
                                 color: ColorTheme.secondaryColor),
                           ),
                           TextSpan(
-                            text: auth,
+                            text: author,
                             style: const TextStyle(
                               color: ColorTheme.orangeColor,
                             ),
@@ -89,8 +108,15 @@ class HomeReadingCard extends StatelessWidget {
                   const Spacer(),
                   Row(
                     children: <Widget>[
-                      const SizedBox(
-                        width: 70.0,
+                      if (numberOfPageRead != 0)
+                        Container(
+                          width: 90,
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          alignment: Alignment.center,
+                          child: Text(percentage!),
+                        ),
+                      SizedBox(
+                        width: numberOfPageRead != 0 ? 0.0 : 70.0.w,
                       ),
                       Expanded(
                         child: MButtonTwoSideRounded(

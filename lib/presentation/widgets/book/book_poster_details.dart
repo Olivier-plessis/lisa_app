@@ -12,6 +12,7 @@ class BookPosterDetails extends StatelessWidget {
     this.onTapDelete,
     this.onTapToFavorite,
     this.restoreToFavorite = false,
+    this.starToRead = false,
     this.deleteTo = false,
     required this.buttonText,
     this.deleteButtonLeftPosition = 170.0,
@@ -20,6 +21,7 @@ class BookPosterDetails extends StatelessWidget {
   final String imageLink;
   final VoidCallback? onTapDelete;
   final VoidCallback? onTapToFavorite;
+  final bool? starToRead;
   final bool? deleteTo;
   final bool? restoreToFavorite;
   final VoidCallback onTapButton;
@@ -56,7 +58,7 @@ class BookPosterDetails extends StatelessWidget {
                       const BorderRadius.only(topLeft: Radius.circular(10)),
                 )),
           ),
-          if (restoreToFavorite == true)
+          if (restoreToFavorite == true && starToRead == false)
             Positioned(
                 left: 110,
                 bottom: 20,
@@ -78,7 +80,7 @@ class BookPosterDetails extends StatelessWidget {
                     ),
                   ),
                 )),
-          if (deleteTo == true)
+          if (deleteTo == true && starToRead == false)
             Positioned(
                 left: deleteButtonLeftPosition,
                 bottom: 20,
@@ -100,31 +102,32 @@ class BookPosterDetails extends StatelessWidget {
                     ),
                   ),
                 )),
-          Positioned(
-              right: 20,
-              bottom: 20,
-              child: InkWell(
-                onTap: onTapButton,
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.0),
-                      color: ColorTheme.orangeLightColor),
-                  child: Row(
-                    children: <Widget>[
-                      const Icon(
-                        Icons.play_arrow_outlined,
-                        color: ColorTheme.secondaryColor,
-                      ),
-                      Text(
-                        buttonText,
-                        style: const TextStyle(
-                            color: ColorTheme.secondaryColor, fontSize: 14),
-                      )
-                    ],
+          if (starToRead == false)
+            Positioned(
+                right: 20,
+                bottom: 20,
+                child: InkWell(
+                  onTap: onTapButton,
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.0),
+                        color: ColorTheme.orangeLightColor),
+                    child: Row(
+                      children: <Widget>[
+                        const Icon(
+                          Icons.play_arrow_outlined,
+                          color: ColorTheme.secondaryColor,
+                        ),
+                        Text(
+                          buttonText,
+                          style: const TextStyle(
+                              color: ColorTheme.secondaryColor, fontSize: 14),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ))
+                ))
         ],
       ),
     );

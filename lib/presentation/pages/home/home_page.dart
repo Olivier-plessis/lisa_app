@@ -1,18 +1,14 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';
 import 'package:lisa_app/common/domain/state/reading/reading_list_state.dart';
-
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/common/utils/string_formater.dart';
-import 'package:lisa_app/presentation/pages/home/widget/home_favorite_card.dart';
 import 'package:lisa_app/presentation/pages/home/widget/home_flex_row.dart';
 import 'package:lisa_app/presentation/pages/home/widget/home_reading_card.dart';
 
@@ -45,7 +41,7 @@ class HomePage extends ConsumerWidget {
                     icon: ClipRRect(
                       borderRadius: BorderRadius.circular(16), // Image border
                       child: SizedBox.fromSize(
-                        size: const Size.fromRadius(34.0),
+                        size: const Size.fromRadius(28.0),
                         child:
                             Image.network(currentUser.photo, fit: BoxFit.cover),
                       ),
@@ -54,19 +50,20 @@ class HomePage extends ConsumerWidget {
                 ],
               ),
               body: SingleChildScrollView(
-                physics: ScrollPhysics(),
+                physics: const ScrollPhysics(),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       'My Books',
-                      style: Theme.of(context).textTheme.headline1,
-                    ).paddedL(48),
+                      style: textTheme.headline1,
+                    ).paddedL(48.0.w),
                     HomeFlexRow(
                       title: 'Continue ',
                       subtitle: 'reading ...',
-                      child: SizedBox(height: 215.h, child: _ReadingList()),
+                      child:
+                          SizedBox(height: 215.h, child: const _ReadingList()),
                     ),
                     HomeFlexRow(
                       title: '',
@@ -139,8 +136,12 @@ class ReadingBookList extends StatelessWidget {
         final SingleBook item = singleBook[index];
         return HomeReadingCard(
           title: item.volumeInfo!.title,
-          auth: item.volumeInfo!.authors.first,
+          author: item.volumeInfo!.authors.first,
           image: '${item.volumeInfo?.imageLinks?.medium}',
+          isStarted: item.isStarted,
+          numberOfPageRead: item.numberOfPageRead,
+          percentage:
+              '${(item!.numberOfPageRead / item!.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
           pressRead: () => context.go(
             '${AppPage.reading.routePath}/${item.id}',
             extra: item,
@@ -156,7 +157,6 @@ class ReadingBookList extends StatelessWidget {
 
 class _FavoritesList extends StatelessWidget {
   const _FavoritesList({
-    super.key,
     required this.ref,
   });
   final WidgetRef ref;

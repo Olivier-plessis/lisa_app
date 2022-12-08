@@ -38,4 +38,31 @@ class ReadingNotifier extends StateNotifier<ReadingState> {
       ),
     );
   }
+
+  Future<void> startToReadBook({required SingleBook book}) async {
+    state = const ReadingState.submitting();
+    final Either<Failure, Unit> response =
+        await _readingRepository.startToReadBook(book: book);
+
+    state = response.fold(
+      (Failure l) => ReadingState.error(error: l),
+      (Unit r) => ReadingState.data(
+        book: book,
+      ),
+    );
+  }
+
+  Future<void> updatePageReadBook(
+      {required SingleBook book, required int numberOfPageRead}) async {
+    state = const ReadingState.submitting();
+    final Either<Failure, Unit> response = await _readingRepository
+        .updatePageReadBook(book: book, numberOfPageRead: numberOfPageRead);
+
+    state = response.fold(
+      (Failure l) => ReadingState.error(error: l),
+      (Unit r) => ReadingState.data(
+        book: book,
+      ),
+    );
+  }
 }

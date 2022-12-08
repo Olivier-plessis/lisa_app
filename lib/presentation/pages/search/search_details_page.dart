@@ -65,7 +65,8 @@ class SearchDetailsPage extends ConsumerWidget {
                       buttonText: 'add to favorite',
                     ),
                     BookPageCategories(
-                      pageCount: '${book.volumeInfo?.pageCount}',
+                      pageCount:
+                          int.parse(book.volumeInfo!.pageCount.toString()),
                       categories: '${book.volumeInfo?.categories.first}',
                     ),
                     BookDescription(

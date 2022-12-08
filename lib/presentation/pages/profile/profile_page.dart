@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,6 +29,15 @@ class ProfilePage extends ConsumerWidget {
               ),
             ),
           ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20.0).r,
+              child: InkWell(
+                child: Text('logout'),
+                onTap: () => ref.read(authNotifierProvider.notifier).signOut(),
+              ),
+            ),
+          )
         ],
       ),
     );

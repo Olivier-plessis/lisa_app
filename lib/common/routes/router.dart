@@ -138,12 +138,11 @@ class RouterNotifier extends ChangeNotifier {
                   path: ':id',
                   pageBuilder: (BuildContext context, GoRouterState state) {
                     final String id = state.params['id']!;
-                    final SingleBook? singleBook = state.extra as SingleBook?;
+                    final SingleBook? book = state.extra as SingleBook?;
                     return MaterialPage<dynamic>(
                       key: state.pageKey,
                       child: MainScaffoldScreen(
-                        child: ReadingDetailsPage(
-                            singleBookId: id, singleBook: singleBook),
+                        child: ReadingDetailsPage(singleBookId: id, book: book),
                       ),
                     );
                   },

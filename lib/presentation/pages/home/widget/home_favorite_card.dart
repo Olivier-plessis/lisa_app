@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
 import 'package:atomic_ui/atoms/text/body/body.dart';
-import 'package:flutter/material.dart';
+
 import 'package:lisa_app/common/utils/string_formater.dart';
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 import 'package:lisa_app/presentation/widgets/expandable_text.dart';
@@ -23,7 +25,7 @@ class HomeFavoriteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final textSpan = TextSpan(
+    final TextSpan textSpan = TextSpan(
       text: ' $title ',
     );
     final TextPainter textPainter = TextPainter(
@@ -66,13 +68,13 @@ class HomeFavoriteCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: ConstrainedBox(
-                        constraints: BoxConstraints.loose(Size(210, 200)),
+                        constraints: BoxConstraints.loose(const Size(210, 200)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             Text(
-                              '$title',
+                              title,
                             ),
                             Text(
                               author,

@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/book.dart';
 import 'package:lisa_app/common/domain/models/book/items.dart';
@@ -74,17 +72,21 @@ class _SearchList extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Material(
+            color: ColorTheme.tertiaryColor,
             child: booksList.whenOrNull(
-              loading: () => Column(
-                children: [
-                  const Center(
-                    child: CircularProgressIndicator.adaptive(
-                      strokeWidth: 10,
-                      backgroundColor: ColorTheme.failureRed,
-                    ),
-                  ).paddedV(100),
-                ],
+              loading: () => Container(
+                color: ColorTheme.tertiaryColor,
+                height: MediaQuery.of(context).size.height -
+                    AppBar().preferredSize.height -
+                    kToolbarHeight,
+                child: const Center(
+                  child: CircularProgressIndicator.adaptive(
+                    strokeWidth: 10,
+                    backgroundColor: ColorTheme.failureRed,
+                  ),
+                ).paddedV(100),
               ),
+              error: (error) => Text('$error'),
               loaded: (Book books) {
                 return SearchList(books: books);
               },

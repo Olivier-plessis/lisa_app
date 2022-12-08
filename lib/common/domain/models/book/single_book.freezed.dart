@@ -22,6 +22,10 @@ SingleBook _$SingleBookFromJson(Map<String, dynamic> json) {
 mixin _$SingleBook {
   String get kind => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  bool get isStarted => throw _privateConstructorUsedError;
+  int get numberOfPageRead => throw _privateConstructorUsedError;
+  @TimestampOrNullConverter()
+  DateTime? get startedAt => throw _privateConstructorUsedError;
   @JsonKey(
       fromJson: SingleBook._singleVolumeInfoFromJson,
       toJson: SingleBook._singleVolumeInfoToJson)
@@ -42,6 +46,10 @@ abstract class $SingleBookCopyWith<$Res> {
   $Res call(
       {String kind,
       String id,
+      bool isStarted,
+      int numberOfPageRead,
+      @TimestampOrNullConverter()
+          DateTime? startedAt,
       @JsonKey(fromJson: SingleBook._singleVolumeInfoFromJson, toJson: SingleBook._singleVolumeInfoToJson)
           SingleVolumeInfo? volumeInfo});
 
@@ -63,6 +71,9 @@ class _$SingleBookCopyWithImpl<$Res, $Val extends SingleBook>
   $Res call({
     Object? kind = null,
     Object? id = null,
+    Object? isStarted = null,
+    Object? numberOfPageRead = null,
+    Object? startedAt = freezed,
     Object? volumeInfo = freezed,
   }) {
     return _then(_value.copyWith(
@@ -74,6 +85,18 @@ class _$SingleBookCopyWithImpl<$Res, $Val extends SingleBook>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      isStarted: null == isStarted
+          ? _value.isStarted
+          : isStarted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      numberOfPageRead: null == numberOfPageRead
+          ? _value.numberOfPageRead
+          : numberOfPageRead // ignore: cast_nullable_to_non_nullable
+              as int,
+      startedAt: freezed == startedAt
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       volumeInfo: freezed == volumeInfo
           ? _value.volumeInfo
           : volumeInfo // ignore: cast_nullable_to_non_nullable
@@ -105,6 +128,10 @@ abstract class _$$_SingleBookCopyWith<$Res>
   $Res call(
       {String kind,
       String id,
+      bool isStarted,
+      int numberOfPageRead,
+      @TimestampOrNullConverter()
+          DateTime? startedAt,
       @JsonKey(fromJson: SingleBook._singleVolumeInfoFromJson, toJson: SingleBook._singleVolumeInfoToJson)
           SingleVolumeInfo? volumeInfo});
 
@@ -125,6 +152,9 @@ class __$$_SingleBookCopyWithImpl<$Res>
   $Res call({
     Object? kind = null,
     Object? id = null,
+    Object? isStarted = null,
+    Object? numberOfPageRead = null,
+    Object? startedAt = freezed,
     Object? volumeInfo = freezed,
   }) {
     return _then(_$_SingleBook(
@@ -136,6 +166,18 @@ class __$$_SingleBookCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      isStarted: null == isStarted
+          ? _value.isStarted
+          : isStarted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      numberOfPageRead: null == numberOfPageRead
+          ? _value.numberOfPageRead
+          : numberOfPageRead // ignore: cast_nullable_to_non_nullable
+              as int,
+      startedAt: freezed == startedAt
+          ? _value.startedAt
+          : startedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       volumeInfo: freezed == volumeInfo
           ? _value.volumeInfo
           : volumeInfo // ignore: cast_nullable_to_non_nullable
@@ -150,6 +192,10 @@ class _$_SingleBook implements _SingleBook {
   const _$_SingleBook(
       {this.kind = '',
       this.id = '',
+      this.isStarted = false,
+      this.numberOfPageRead = 0,
+      @TimestampOrNullConverter()
+          this.startedAt,
       @JsonKey(fromJson: SingleBook._singleVolumeInfoFromJson, toJson: SingleBook._singleVolumeInfoToJson)
           this.volumeInfo});
 
@@ -163,6 +209,15 @@ class _$_SingleBook implements _SingleBook {
   @JsonKey()
   final String id;
   @override
+  @JsonKey()
+  final bool isStarted;
+  @override
+  @JsonKey()
+  final int numberOfPageRead;
+  @override
+  @TimestampOrNullConverter()
+  final DateTime? startedAt;
+  @override
   @JsonKey(
       fromJson: SingleBook._singleVolumeInfoFromJson,
       toJson: SingleBook._singleVolumeInfoToJson)
@@ -170,7 +225,7 @@ class _$_SingleBook implements _SingleBook {
 
   @override
   String toString() {
-    return 'SingleBook(kind: $kind, id: $id, volumeInfo: $volumeInfo)';
+    return 'SingleBook(kind: $kind, id: $id, isStarted: $isStarted, numberOfPageRead: $numberOfPageRead, startedAt: $startedAt, volumeInfo: $volumeInfo)';
   }
 
   @override
@@ -180,13 +235,20 @@ class _$_SingleBook implements _SingleBook {
             other is _$_SingleBook &&
             (identical(other.kind, kind) || other.kind == kind) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.isStarted, isStarted) ||
+                other.isStarted == isStarted) &&
+            (identical(other.numberOfPageRead, numberOfPageRead) ||
+                other.numberOfPageRead == numberOfPageRead) &&
+            (identical(other.startedAt, startedAt) ||
+                other.startedAt == startedAt) &&
             (identical(other.volumeInfo, volumeInfo) ||
                 other.volumeInfo == volumeInfo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, kind, id, volumeInfo);
+  int get hashCode => Object.hash(runtimeType, kind, id, isStarted,
+      numberOfPageRead, startedAt, volumeInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -206,6 +268,10 @@ abstract class _SingleBook implements SingleBook {
   const factory _SingleBook(
       {final String kind,
       final String id,
+      final bool isStarted,
+      final int numberOfPageRead,
+      @TimestampOrNullConverter()
+          final DateTime? startedAt,
       @JsonKey(fromJson: SingleBook._singleVolumeInfoFromJson, toJson: SingleBook._singleVolumeInfoToJson)
           final SingleVolumeInfo? volumeInfo}) = _$_SingleBook;
 
@@ -216,6 +282,13 @@ abstract class _SingleBook implements SingleBook {
   String get kind;
   @override
   String get id;
+  @override
+  bool get isStarted;
+  @override
+  int get numberOfPageRead;
+  @override
+  @TimestampOrNullConverter()
+  DateTime? get startedAt;
   @override
   @JsonKey(
       fromJson: SingleBook._singleVolumeInfoFromJson,

@@ -22,6 +22,7 @@ mixin _$ReadingState {
     required TResult Function() submitting,
     required TResult Function(SingleBook book) data,
     required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$ReadingState {
     TResult? Function()? submitting,
     TResult? Function(SingleBook book)? data,
     TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$ReadingState {
     TResult Function()? submitting,
     TResult Function(SingleBook book)? data,
     TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$ReadingState {
     required TResult Function(_Submitting value) submitting,
     required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$ReadingState {
     TResult? Function(_Submitting value)? submitting,
     TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$ReadingState {
     TResult Function(_Submitting value)? submitting,
     TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$_Initial implements _Initial {
     required TResult Function() submitting,
     required TResult Function(SingleBook book) data,
     required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
     return initial();
   }
@@ -138,6 +145,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? submitting,
     TResult? Function(SingleBook book)? data,
     TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
     return initial?.call();
   }
@@ -149,6 +157,7 @@ class _$_Initial implements _Initial {
     TResult Function()? submitting,
     TResult Function(SingleBook book)? data,
     TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,6 +173,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Submitting value) submitting,
     required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
     return initial(this);
   }
@@ -175,6 +185,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Submitting value)? submitting,
     TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
     return initial?.call(this);
   }
@@ -186,6 +197,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Submitting value)? submitting,
     TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,6 +253,7 @@ class _$_Submitting implements _Submitting {
     required TResult Function() submitting,
     required TResult Function(SingleBook book) data,
     required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
     return submitting();
   }
@@ -252,6 +265,7 @@ class _$_Submitting implements _Submitting {
     TResult? Function()? submitting,
     TResult? Function(SingleBook book)? data,
     TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
     return submitting?.call();
   }
@@ -263,6 +277,7 @@ class _$_Submitting implements _Submitting {
     TResult Function()? submitting,
     TResult Function(SingleBook book)? data,
     TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
     if (submitting != null) {
@@ -278,6 +293,7 @@ class _$_Submitting implements _Submitting {
     required TResult Function(_Submitting value) submitting,
     required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
     return submitting(this);
   }
@@ -289,6 +305,7 @@ class _$_Submitting implements _Submitting {
     TResult? Function(_Submitting value)? submitting,
     TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
     return submitting?.call(this);
   }
@@ -300,6 +317,7 @@ class _$_Submitting implements _Submitting {
     TResult Function(_Submitting value)? submitting,
     TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (submitting != null) {
@@ -389,6 +407,7 @@ class _$_Data implements _Data {
     required TResult Function() submitting,
     required TResult Function(SingleBook book) data,
     required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
     return data(book);
   }
@@ -400,6 +419,7 @@ class _$_Data implements _Data {
     TResult? Function()? submitting,
     TResult? Function(SingleBook book)? data,
     TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
     return data?.call(book);
   }
@@ -411,6 +431,7 @@ class _$_Data implements _Data {
     TResult Function()? submitting,
     TResult Function(SingleBook book)? data,
     TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -426,6 +447,7 @@ class _$_Data implements _Data {
     required TResult Function(_Submitting value) submitting,
     required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
     return data(this);
   }
@@ -437,6 +459,7 @@ class _$_Data implements _Data {
     TResult? Function(_Submitting value)? submitting,
     TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
     return data?.call(this);
   }
@@ -448,6 +471,7 @@ class _$_Data implements _Data {
     TResult Function(_Submitting value)? submitting,
     TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -541,6 +565,7 @@ class _$_Error implements _Error {
     required TResult Function() submitting,
     required TResult Function(SingleBook book) data,
     required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
     return error(this.error);
   }
@@ -552,6 +577,7 @@ class _$_Error implements _Error {
     TResult? Function()? submitting,
     TResult? Function(SingleBook book)? data,
     TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
     return error?.call(this.error);
   }
@@ -563,6 +589,7 @@ class _$_Error implements _Error {
     TResult Function()? submitting,
     TResult Function(SingleBook book)? data,
     TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -578,6 +605,7 @@ class _$_Error implements _Error {
     required TResult Function(_Submitting value) submitting,
     required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
     return error(this);
   }
@@ -589,6 +617,7 @@ class _$_Error implements _Error {
     TResult? Function(_Submitting value)? submitting,
     TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
     return error?.call(this);
   }
@@ -600,6 +629,7 @@ class _$_Error implements _Error {
     TResult Function(_Submitting value)? submitting,
     TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -615,5 +645,164 @@ abstract class _Error implements ReadingState {
   Failure get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_EmptyCopyWith<$Res> {
+  factory _$$_EmptyCopyWith(_$_Empty value, $Res Function(_$_Empty) then) =
+      __$$_EmptyCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SingleBook book});
+
+  $SingleBookCopyWith<$Res> get book;
+}
+
+/// @nodoc
+class __$$_EmptyCopyWithImpl<$Res>
+    extends _$ReadingStateCopyWithImpl<$Res, _$_Empty>
+    implements _$$_EmptyCopyWith<$Res> {
+  __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? book = null,
+  }) {
+    return _then(_$_Empty(
+      book: null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as SingleBook,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SingleBookCopyWith<$Res> get book {
+    return $SingleBookCopyWith<$Res>(_value.book, (value) {
+      return _then(_value.copyWith(book: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_Empty implements _Empty {
+  const _$_Empty({required this.book});
+
+  @override
+  final SingleBook book;
+
+  @override
+  String toString() {
+    return 'ReadingState.empty(book: $book)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Empty &&
+            (identical(other.book, book) || other.book == book));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, book);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EmptyCopyWith<_$_Empty> get copyWith =>
+      __$$_EmptyCopyWithImpl<_$_Empty>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
+  }) {
+    return empty(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
+  }) {
+    return empty?.call(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(book);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
+    TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Empty implements ReadingState {
+  const factory _Empty({required final SingleBook book}) = _$_Empty;
+
+  SingleBook get book;
+  @JsonKey(ignore: true)
+  _$$_EmptyCopyWith<_$_Empty> get copyWith =>
       throw _privateConstructorUsedError;
 }

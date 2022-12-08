@@ -83,7 +83,8 @@ class FavoriteDetailsPage extends ConsumerWidget {
                       buttonText: 'add to reading list',
                     ),
                     BookPageCategories(
-                      pageCount: '${book.volumeInfo?.pageCount}',
+                      pageCount:
+                          int.parse(book.volumeInfo!.pageCount.toString()),
                       categories: '${book.volumeInfo?.categories.first}',
                     ),
                     BookDescription(

@@ -1,6 +1,6 @@
 #include "Generated.xcconfig"
 
-FLUTTER_TARGET=lib/main_prod.dart
+FLUTTER_TARGET=lib/main/main_prod.dart
 ASSET_PREFIX=prod
 BUNDLE_NAME=Lisa
 BUNDLE_DISPLAY_NAME=Lisa

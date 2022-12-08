@@ -1,5 +1,5 @@
 name: app_authentication
-description: A new Flutter package project.
+description: firebase authentication package for all project.
 version: 0.0.1
 
 environment:

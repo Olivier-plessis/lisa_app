@@ -67,28 +67,27 @@ class _ReadingList extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          if (singleBooks.isNotEmpty)
-            ref.watch<ReadingListState>(readingListNotifierProvider).maybeMap(
-                  orElse: () => const SizedBox.shrink(),
-                  empty: (_) => SizedBox(
-                    height: MediaQuery.of(context).size.height -
-                        AppBar().preferredSize.height -
-                        kBottomNavigationBarHeight -
-                        kToolbarHeight,
-                    child: const Padding(
-                      padding: EdgeInsets.all(58.0),
-                      child: Center(
-                        child: Text(
-                          "You haven't added anything to reading list",
-                          style: TextStyle(color: Colors.red),
-                        ),
+          ref.watch<ReadingListState>(readingListNotifierProvider).maybeMap(
+                orElse: () => const SizedBox.shrink(),
+                empty: (_) => SizedBox(
+                  height: MediaQuery.of(context).size.height -
+                      AppBar().preferredSize.height -
+                      kBottomNavigationBarHeight -
+                      kToolbarHeight,
+                  child: const Padding(
+                    padding: EdgeInsets.all(58.0),
+                    child: Center(
+                      child: Text(
+                        "You haven't added anything to reading list",
+                        style: TextStyle(color: Colors.red),
                       ),
                     ),
                   ),
-                  loaded: (_) => BookList(
-                    singlebooks: singleBooks,
-                  ),
                 ),
+                loaded: (_) => BookList(
+                  singlebooks: singleBooks,
+                ),
+              ),
         ],
       ),
     );

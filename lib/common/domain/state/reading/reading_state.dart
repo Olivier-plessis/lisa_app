@@ -11,4 +11,5 @@ class ReadingState with _$ReadingState {
   const factory ReadingState.submitting() = _Submitting;
   const factory ReadingState.data({required SingleBook book}) = _Data;
   const factory ReadingState.error({required Failure error}) = _Error;
+  const factory ReadingState.empty({required SingleBook book}) = _Empty;
 }

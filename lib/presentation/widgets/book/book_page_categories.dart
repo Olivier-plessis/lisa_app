@@ -1,16 +1,21 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_ui/app_ui.dart';
+import 'package:flutter/material.dart';
 
 class BookPageCategories extends StatelessWidget {
   const BookPageCategories({
     super.key,
     required this.pageCount,
     required this.categories,
+    this.numberOfPageRead,
+    this.isStarted = false,
+    this.onTap,
   });
 
-  final String pageCount;
+  final int pageCount;
   final String categories;
+  final String? numberOfPageRead;
+  final bool? isStarted;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +30,31 @@ class BookPageCategories extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: <Widget>[
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0.w, vertical: 20.0.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text.rich(TextSpan(children: [
-                  TextSpan(
-                      text: pageCount,
-                      style: textTheme.headline5!
-                          .copyWith(color: ColorTheme.secondaryColor)),
-                  TextSpan(
-                      text: ' pages ',
-                      style: textTheme.subtitle2!
-                          .copyWith(color: ColorTheme.bodyTextColor)),
-                ])),
+                Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    if (isStarted!)
+                      Text('$numberOfPageRead / ',
+                          style: textTheme.headline5!
+                              .copyWith(color: ColorTheme.secondaryColor)),
+                    Text('$pageCount',
+                        style: textTheme.headline5!
+                            .copyWith(color: ColorTheme.secondaryColor)),
+                    Text(' pages ',
+                        style: textTheme.subtitle2!
+                            .copyWith(color: ColorTheme.bodyTextColor)),
+                    if (isStarted!)
+                      InkWell(
+                        onTap: onTap,
+                        child: Icon(Icons.edit_outlined,
+                            color: ColorTheme.secondaryColor),
+                      ),
+                  ],
+                ),
                 const Gap(50.0),
                 if (categories.isNotEmpty && categories.length != 0)
                   Padding(
@@ -48,7 +63,7 @@ class BookPageCategories extends StatelessWidget {
                       children: <Widget>[
                         Container(
                             padding: const EdgeInsets.only(
-                                left: 8, top: 8, bottom: 8, right: 4),
+                                left: 8, top: 6, bottom: 8, right: 4),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: ColorTheme.orangeLightColor),
@@ -59,7 +74,7 @@ class BookPageCategories extends StatelessWidget {
                         const Gap(10.0),
                         Container(
                             padding: const EdgeInsets.only(
-                                left: 8, top: 8, bottom: 8, right: 4),
+                                left: 8, top: 6, bottom: 8, right: 4),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: ColorTheme.lightPurpleColor),
@@ -70,7 +85,7 @@ class BookPageCategories extends StatelessWidget {
                         const Gap(10.0),
                         Container(
                             padding: const EdgeInsets.only(
-                                left: 8, top: 8, bottom: 8, right: 4),
+                                left: 8, top: 6, bottom: 8, right: 4),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12.0),
                                 color: ColorTheme.warningYellow),

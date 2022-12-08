@@ -4,7 +4,6 @@ import 'package:app_authentication/common/domain/states/data_source_exception.da
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:lisa_app/common/datas/datasources/firebase_collections.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
@@ -12,6 +11,9 @@ abstract class IReadingRemoteDataSource {
   Future<Unit> addBookToReadingList({required SingleBook book});
   Future<Unit> removeFromReadingList({required SingleBook book});
   Stream<List<SingleBook>> getReadingBooks();
+  Future<Unit> startToReadBook({required SingleBook book});
+  Future<Unit> updatePageReadBook(
+      {required SingleBook book, required int numberOfPageRead});
 }
 
 class ReadingDataSource implements IReadingRemoteDataSource {
@@ -46,6 +48,7 @@ class ReadingDataSource implements IReadingRemoteDataSource {
           .collection(Collections.users)
           .doc(user!.uid)
           .collection(Collections.reading)
+          .orderBy('startedAt', descending: true)
           .snapshots()
           .transform(
             StreamTransformer<QuerySnapshot<Map<String, dynamic>>,
@@ -60,6 +63,52 @@ class ReadingDataSource implements IReadingRemoteDataSource {
               ),
             ),
           );
+    } on FirebaseException catch (e) {
+      throw DataSourceException(message: e.message);
+    }
+  }
+
+  @override
+  Future<Unit> startToReadBook({required SingleBook book}) async {
+    try {
+      final User? user = _firebaseAuth.currentUser;
+      final QuerySnapshot<Map<String, dynamic>> startBook =
+          await _firebaseFirestore
+              .collection(Collections.users)
+              .doc(user!.uid)
+              .collection(Collections.reading)
+              .where('id', isEqualTo: book.id)
+              .get();
+
+      startBook.docs.first.reference.update({
+        'isStarted': true,
+        'startedAt': DateTime.now(),
+      });
+
+      return unit;
+    } on FirebaseException catch (e) {
+      throw DataSourceException(message: e.message);
+    }
+  }
+
+  @override
+  Future<Unit> updatePageReadBook(
+      {required SingleBook book, required int numberOfPageRead}) async {
+    try {
+      final User? user = _firebaseAuth.currentUser;
+      final QuerySnapshot<Map<String, dynamic>> startBook =
+          await _firebaseFirestore
+              .collection(Collections.users)
+              .doc(user!.uid)
+              .collection(Collections.reading)
+              .where('id', isEqualTo: book.id)
+              .get();
+
+      startBook.docs.first.reference.update({
+        'numberOfPageRead': numberOfPageRead,
+      });
+
+      return unit;
     } on FirebaseException catch (e) {
       throw DataSourceException(message: e.message);
     }
