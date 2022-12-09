@@ -11,7 +11,7 @@ extension StringCasingExtension on String {
 }
 
 String getNewLineString(List<String> readLines) {
-  StringBuffer sb = StringBuffer();
+  final StringBuffer sb = StringBuffer();
   for (final String line in readLines) {
     sb.write('$line\n\n');
   }

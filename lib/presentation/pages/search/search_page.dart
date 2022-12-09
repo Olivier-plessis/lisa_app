@@ -3,7 +3,6 @@ import 'package:atomic_ui/atomic_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/book.dart';
 import 'package:lisa_app/common/domain/models/book/items.dart';
@@ -96,7 +95,7 @@ class _SearchList extends ConsumerWidget {
                   padding: EdgeInsets.all(58.0),
                   child: Center(
                     child: Text(
-                      "Enter the title of the book and press enter to see the results of your search",
+                      'Enter the title of the book and press enter to see the results of your search',
                       style: TextStyle(color: Colors.red),
                     ),
                   ),

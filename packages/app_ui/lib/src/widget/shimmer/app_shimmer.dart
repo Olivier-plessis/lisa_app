@@ -1,7 +1,6 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:app_ui/src/widget/shimmer/placeholders.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class AppShimmer extends StatelessWidget {
   const AppShimmer({super.key});

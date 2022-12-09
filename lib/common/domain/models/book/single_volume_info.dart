@@ -5,8 +5,6 @@ part 'single_volume_info.g.dart';
 
 @freezed
 class SingleVolumeInfo with _$SingleVolumeInfo {
-  factory SingleVolumeInfo.fromJson(Map<String, dynamic> json) =>
-      _$SingleVolumeInfoFromJson(json);
 
   const factory SingleVolumeInfo({
     @Default('')
@@ -33,6 +31,8 @@ class SingleVolumeInfo with _$SingleVolumeInfo {
     )
         ImageLinks? imageLinks,
   }) = _SingleVolumeInfo;
+  factory SingleVolumeInfo.fromJson(Map<String, dynamic> json) =>
+      _$SingleVolumeInfoFromJson(json);
 
   static ImageLinks? _imageLinksFromJson(Map<String, dynamic>? json) {
     if (json == null) return null;

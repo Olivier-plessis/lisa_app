@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/state/settings/settings_details.dart';
 import 'package:lisa_app/common/domain/state/settings/settings_state.dart';
-import 'package:lisa_app/common/utils/theme_mode.dart' as _utils;
+import 'package:lisa_app/common/utils/theme_mode.dart' as utils;
 
 class SettingsNotifier extends StateNotifier<SettingsState> {
   SettingsNotifier(this.ref) : super(const SettingsState.initial()) {
@@ -17,9 +17,9 @@ class SettingsNotifier extends StateNotifier<SettingsState> {
     state = const SettingsState.loading();
     final String language =
         (await ref.read(storageDatabase).read(key: 'language')) ??
-            _utils.defaultLanguage;
+            utils.defaultLanguage;
     final String theme = (await ref.read(storageDatabase).read(key: 'theme')) ??
-        _utils.defaultTheme;
+        utils.defaultTheme;
     details = SettingsDetails(currentLanguage: language, themeMode: theme);
     state = SettingsState.data(details: details);
   }

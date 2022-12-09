@@ -5,7 +5,6 @@ import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -139,7 +138,7 @@ class _CurrentBookDetailState extends State<CurrentBookDetail> {
               BookPageCategories(
                 pageCount:
                     int.parse(widget.book!.volumeInfo!.pageCount.toString()),
-                categories: '${widget.book!.volumeInfo?.categories.first}',
+                categories: '${widget.book!.volumeInfo?.categories}',
                 numberOfPageRead: widget.book!.numberOfPageRead.toString(),
                 isStarted: widget.book!.isStarted,
                 onTap: () {

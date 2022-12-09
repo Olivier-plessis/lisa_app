@@ -1,16 +1,12 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_ui/app_ui.dart';
-import 'package:atomic_ui/atomic_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/presentation/widgets/book/book_card.dart';
-import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -19,7 +15,7 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return CustomScrollView(physics: ClampingScrollPhysics(), slivers: <Widget>[
+    return CustomScrollView(physics: const ClampingScrollPhysics(), slivers: <Widget>[
       SliverAppBar(
         backgroundColor: Colors.transparent,
         expandedHeight: 184.0,
@@ -51,13 +47,13 @@ class FavoritePage extends StatelessWidget {
               )),
         ),
       ),
-      _FavoritesList(),
+      const _FavoritesList(),
     ]);
   }
 }
 
 class _FavoritesList extends ConsumerWidget {
-  const _FavoritesList({super.key});
+  const _FavoritesList();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -98,7 +94,6 @@ class _FavoritesList extends ConsumerWidget {
 
 class _BookListCard extends StatelessWidget {
   const _BookListCard({
-    super.key,
     required this.singlebooks,
     required this.ref,
   });

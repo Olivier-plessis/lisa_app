@@ -1,12 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_ui/app_ui.dart';
-import 'package:atomic_ui/atomic_ui.dart';
-import 'package:atomic_ui/atoms/text/body/body.dart';
-
-import 'package:lisa_app/common/utils/string_formater.dart';
+import 'package:flutter/material.dart';
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
-import 'package:lisa_app/presentation/widgets/expandable_text.dart';
 
 class HomeFavoriteCard extends StatelessWidget {
   const HomeFavoriteCard({
@@ -32,7 +26,6 @@ class HomeFavoriteCard extends StatelessWidget {
       text: textSpan,
       textDirection: TextDirection.rtl,
     )..layout(
-        minWidth: 0,
         maxWidth: 250,
       );
     return GestureDetector(

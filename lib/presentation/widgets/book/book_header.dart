@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 class BookHeader extends StatelessWidget {
   const BookHeader(

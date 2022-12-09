@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import 'injection.config.dart';
 
-final locator = GetIt.instance;
+final GetIt locator = GetIt.instance;
 
 @injectableInit
 Future<void> configureDependencies(String env) async {

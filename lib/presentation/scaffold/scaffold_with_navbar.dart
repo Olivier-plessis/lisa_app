@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_ui/app_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lisa_bottom_bar/lisa_bottom_bar.dart';
-
 import 'package:lisa_app/common/routes/router_utils.dart';
+import 'package:lisa_bottom_bar/lisa_bottom_bar.dart';
 
 class ScaffoldWithNavBar extends StatefulWidget {
   const ScaffoldWithNavBar({

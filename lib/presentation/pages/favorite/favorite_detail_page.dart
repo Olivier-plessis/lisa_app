@@ -1,20 +1,16 @@
-import 'package:flutter/material.dart';
-
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_state.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
-import 'package:lisa_app/common/utils/string_formater.dart';
 import 'package:lisa_app/presentation/widgets/book/book_description.dart';
 import 'package:lisa_app/presentation/widgets/book/book_header.dart';
 import 'package:lisa_app/presentation/widgets/book/book_page_categories.dart';
 import 'package:lisa_app/presentation/widgets/book/book_poster_details.dart';
-import 'package:lisa_app/presentation/widgets/expandable_text.dart';
 
 class FavoriteDetailsPage extends ConsumerWidget {
   const FavoriteDetailsPage(
@@ -85,7 +81,7 @@ class FavoriteDetailsPage extends ConsumerWidget {
                     BookPageCategories(
                       pageCount:
                           int.parse(book.volumeInfo!.pageCount.toString()),
-                      categories: '${book.volumeInfo?.categories.first}',
+                      categories: '${book.volumeInfo?.categories}',
                     ),
                     BookDescription(
                       description: book.volumeInfo!.description,

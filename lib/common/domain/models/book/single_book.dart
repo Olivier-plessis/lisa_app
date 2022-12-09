@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 import 'package:lisa_app/common/domain/models/book/single_volume_info.dart';
 
@@ -27,6 +26,9 @@ class SingleBook with _$SingleBook {
         SingleVolumeInfo? volumeInfo,
   }) = _SingleBook;
 
+  factory SingleBook.fromJson(Map<String, dynamic> json) =>
+      _$SingleBookFromJson(json);
+
   static SingleVolumeInfo? _singleVolumeInfoFromJson(
       Map<String, dynamic>? json) {
     if (json == null) return null;
@@ -40,9 +42,6 @@ class SingleBook with _$SingleBook {
 
     return volumeInfo.toJson();
   }
-
-  factory SingleBook.fromJson(Map<String, dynamic> json) =>
-      _$SingleBookFromJson(json);
 }
 
 class TimestampOrNullConverter implements JsonConverter<DateTime?, Timestamp?> {

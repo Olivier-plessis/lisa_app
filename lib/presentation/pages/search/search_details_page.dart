@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/items.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
@@ -49,7 +46,7 @@ class SearchDetailsPage extends ConsumerWidget {
                   children: [
                     BookHeader(
                       title: '${book.volumeInfo?.title}',
-                      authors: book.volumeInfo!.authors!.first,
+                      authors: book.volumeInfo!.authors.first,
                       publisher: '${book.volumeInfo?.publisher}',
                       publishedDate: '${book.volumeInfo?.publishedDate}',
                     ),
@@ -67,12 +64,11 @@ class SearchDetailsPage extends ConsumerWidget {
                     BookPageCategories(
                       pageCount:
                           int.parse(book.volumeInfo!.pageCount.toString()),
-                      categories: '${book.volumeInfo?.categories!}',
+                      categories: '${book.volumeInfo?.categories}',
                     ),
-                    if (book.volumeInfo!.description != null)
-                      BookDescription(
-                        description: book.volumeInfo!.description,
-                      ),
+                    BookDescription(
+                      description: book.volumeInfo!.description,
+                    ),
                     const Gap(40.0),
                   ],
                 ),

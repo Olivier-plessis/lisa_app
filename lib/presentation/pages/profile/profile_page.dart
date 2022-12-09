@@ -1,12 +1,11 @@
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 class ProfilePage extends ConsumerWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,9 +21,9 @@ class ProfilePage extends ConsumerWidget {
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               title: ElevatedButton(
-                  onPressed: () => context.go('/'), child: Text('retour')),
+                  onPressed: () => context.go('/'), child: const Text('retour')),
               background: Hero(
-                tag: "avatar-${currentUser?.uid}",
+                tag: 'avatar-${currentUser?.uid}',
                 child:
                     Image.network('${currentUser?.photo}', fit: BoxFit.cover),
               ),
@@ -34,7 +33,7 @@ class ProfilePage extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 20.0).r,
               child: InkWell(
-                child: Text('logout'),
+                child: const Text('logout'),
                 onTap: () => ref.read(authNotifierProvider.notifier).signOut(),
               ),
             ),
