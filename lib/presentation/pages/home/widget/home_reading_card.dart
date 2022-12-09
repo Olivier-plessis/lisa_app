@@ -114,7 +114,10 @@ class HomeReadingCard extends StatelessWidget {
                           width: 90,
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           alignment: Alignment.center,
-                          child: Text(percentage!),
+                          child: Text(percentage!,
+                              style: TextStyle(
+                                fontSize: FontSizeTheme.bodyRegular.sp,
+                              )),
                         ),
                       SizedBox(
                         width: numberOfPageRead != 0 ? 0.0 : 70.0.w,

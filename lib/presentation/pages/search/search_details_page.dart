@@ -67,11 +67,12 @@ class SearchDetailsPage extends ConsumerWidget {
                     BookPageCategories(
                       pageCount:
                           int.parse(book.volumeInfo!.pageCount.toString()),
-                      categories: '${book.volumeInfo?.categories.first}',
+                      categories: '${book.volumeInfo?.categories!}',
                     ),
-                    BookDescription(
-                      description: book.volumeInfo!.description,
-                    ),
+                    if (book.volumeInfo!.description != null)
+                      BookDescription(
+                        description: book.volumeInfo!.description,
+                      ),
                     const Gap(40.0),
                   ],
                 ),

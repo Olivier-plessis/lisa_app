@@ -27,56 +27,56 @@ class StyleTheme {
 
   static TextStyle get headline1 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleVeryLarge),
+      fontSize: FontSizeTheme.titleVeryLarge.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
 
   static TextStyle get headline2 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleLarge),
+      fontSize: FontSizeTheme.titleLarge.sp,
       fontWeight: FontWeightTheme.regular,
     );
   }
 
   static TextStyle get headline3 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleMedium),
+      fontSize: FontSizeTheme.titleMedium.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
 
   static TextStyle get headline4 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleRegular),
+      fontSize: FontSizeTheme.titleRegular.sp,
       fontWeight: FontWeightTheme.bold,
     );
   }
 
   static TextStyle get headline5 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleLight),
+      fontSize: FontSizeTheme.titleLight.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
 
   static TextStyle get subtitle1 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyMedium),
+      fontSize: FontSizeTheme.bodyMedium.sp,
       fontWeight: FontWeightTheme.bold,
     );
   }
 
   static TextStyle get subtitle2 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyRegular),
+      fontSize: FontSizeTheme.bodyRegular.sp,
       fontWeight: FontWeightTheme.bold,
     );
   }
 
   static TextStyle get bodyText1 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyLarge),
+      fontSize: FontSizeTheme.bodyLarge.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
@@ -84,14 +84,14 @@ class StyleTheme {
   /// Default Text Style
   static TextStyle get bodyText2 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyMedium),
+      fontSize: FontSizeTheme.bodyMedium.sp,
       fontWeight: FontWeightTheme.regular,
     );
   }
 
   static TextStyle get overline {
     return _baseTextStyle.copyWith(
-        fontSize: ScreenUtil().setSp(FontSizeTheme.bodyMedium),
+        fontSize: FontSizeTheme.bodyMedium.sp,
         fontWeight: FontWeightTheme.regular,
         decoration: TextDecoration.underline,
         color: ColorTheme.secondaryColor);
@@ -100,7 +100,7 @@ class StyleTheme {
   /// Button Text Style
   static TextStyle get button {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyLarge),
+      fontSize: FontSizeTheme.bodyLarge.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
@@ -130,7 +130,7 @@ class DarkStyleTheme {
 
   static TextStyle get headline1 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleVeryLarge),
+      fontSize: FontSizeTheme.titleVeryLarge.sp,
       fontWeight: FontWeightTheme.medium,
       color: ColorTheme.veryGreyLightColor,
     );
@@ -138,49 +138,49 @@ class DarkStyleTheme {
 
   static TextStyle get headline2 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleLarge),
+      fontSize: FontSizeTheme.titleLarge.sp,
       fontWeight: FontWeightTheme.regular,
     );
   }
 
   static TextStyle get headline3 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleMedium),
+      fontSize: FontSizeTheme.titleMedium.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
 
   static TextStyle get headline4 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleRegular),
+      fontSize: FontSizeTheme.titleRegular.sp,
       fontWeight: FontWeightTheme.bold,
     );
   }
 
   static TextStyle get headline5 {
     return _baseLargeTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.titleLight),
+      fontSize: FontSizeTheme.titleLight.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
 
   static TextStyle get subtitle1 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyMedium),
+      fontSize: FontSizeTheme.bodyMedium.sp,
       fontWeight: FontWeightTheme.bold,
     );
   }
 
   static TextStyle get subtitle2 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyRegular),
+      fontSize: FontSizeTheme.bodyRegular.sp,
       fontWeight: FontWeightTheme.bold,
     );
   }
 
   static TextStyle get bodyText1 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyLarge),
+      fontSize: FontSizeTheme.bodyLarge.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }
@@ -188,14 +188,14 @@ class DarkStyleTheme {
   /// Default Text Style
   static TextStyle get bodyText2 {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyMedium),
+      fontSize: FontSizeTheme.bodyMedium.sp,
       fontWeight: FontWeightTheme.regular,
     );
   }
 
   static TextStyle get overline {
     return _baseTextStyle.copyWith(
-        fontSize: ScreenUtil().setSp(FontSizeTheme.bodyMedium),
+        fontSize: FontSizeTheme.bodyMedium.sp,
         fontWeight: FontWeightTheme.regular,
         decoration: TextDecoration.underline,
         color: ColorTheme.secondaryColor);
@@ -204,7 +204,7 @@ class DarkStyleTheme {
   /// Button Text Style
   static TextStyle get button {
     return _baseTextStyle.copyWith(
-      fontSize: ScreenUtil().setSp(FontSizeTheme.bodyLarge),
+      fontSize: FontSizeTheme.bodyLarge.sp,
       fontWeight: FontWeightTheme.medium,
     );
   }

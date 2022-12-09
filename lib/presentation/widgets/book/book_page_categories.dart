@@ -1,28 +1,48 @@
+import 'dart:collection';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+
+Iterable<E> mapIndexed<E, T>(
+    Iterable<T> items, E Function(int index, T item) f) sync* {
+  int index = 0;
+
+  for (final item in items) {
+    yield f(index, item);
+    index = index + 1;
+  }
+}
 
 class BookPageCategories extends StatelessWidget {
   const BookPageCategories({
     super.key,
     required this.pageCount,
-    required this.categories,
+    this.categories,
     this.numberOfPageRead,
     this.isStarted = false,
     this.onTap,
   });
 
   final int pageCount;
-  final String categories;
+  final String? categories;
   final String? numberOfPageRead;
   final bool? isStarted;
   final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    final List<String> split = categories.split('/');
-    final Map<int, String> values = {
-      for (int i = 0; i < split.length; i++) i: split[i]
-    };
+    List<String>? listOfCategories = [];
+
+    if (categories!.length >= 3) {
+      listOfCategories =
+          categories?.substring(0, categories?.indexOf(',')).split('/');
+    }
+
+    final List<Color> colors = [
+      ColorTheme.orangeLightColor,
+      ColorTheme.lightPurpleColor,
+      ColorTheme.warningYellow
+    ];
 
     return SizedBox(
       height: 68.h,
@@ -36,7 +56,7 @@ class BookPageCategories extends StatelessWidget {
               children: <Widget>[
                 Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
+                  children: <Widget>[
                     if (isStarted!)
                       Text('$numberOfPageRead / ',
                           style: textTheme.headline5!
@@ -50,52 +70,32 @@ class BookPageCategories extends StatelessWidget {
                     if (isStarted!)
                       InkWell(
                         onTap: onTap,
-                        child: Icon(Icons.edit_outlined,
+                        child: const Icon(Icons.edit_outlined,
                             color: ColorTheme.secondaryColor),
                       ),
                   ],
                 ),
                 const Gap(50.0),
-                if (categories.isNotEmpty && categories.length != 0)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 6, bottom: 8, right: 4),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: ColorTheme.orangeLightColor),
-                            child: Text('#${values[0]}',
-                                style: const TextStyle(
-                                    color: ColorTheme.bodyTextColor,
-                                    fontSize: 12))),
-                        const Gap(10.0),
-                        Container(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 6, bottom: 8, right: 4),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: ColorTheme.lightPurpleColor),
-                            child: Text('#${values[1]}',
-                                style: const TextStyle(
-                                    color: ColorTheme.bodyTextColor,
-                                    fontSize: 12))),
-                        const Gap(10.0),
-                        Container(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 6, bottom: 8, right: 4),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: ColorTheme.warningYellow),
-                            child: Text('#${values[2]}',
-                                style: const TextStyle(
-                                    color: ColorTheme.bodyTextColor,
-                                    fontSize: 12))),
-                      ],
-                    ),
-                  )
+                Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: (categories!.length >= 3)
+                      ? Row(
+                          children: mapIndexed(listOfCategories!,
+                              (int index, String item) {
+                          return Container(
+                              margin: const EdgeInsets.only(right: 8),
+                              padding: const EdgeInsets.only(
+                                  left: 8, top: 6, bottom: 8, right: 4),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12.0),
+                                  color: colors[index]),
+                              child: Text('#${item.replaceAll('[', '')}',
+                                  style: const TextStyle(
+                                      color: ColorTheme.bodyTextColor,
+                                      fontSize: 12)));
+                        }).toList())
+                      : const SizedBox.shrink(),
+                )
               ],
             ),
           )

@@ -12,8 +12,7 @@ import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/common/utils/string_formater.dart';
 import 'package:lisa_app/presentation/pages/home/widget/home_flex_row.dart';
 import 'package:lisa_app/presentation/pages/home/widget/home_reading_card.dart';
-
-import '../../widgets/book/book_card.dart';
+import 'package:lisa_app/presentation/widgets/book/book_card.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -142,7 +141,7 @@ class ReadingBookList extends StatelessWidget {
           isStarted: item.isStarted,
           numberOfPageRead: item.numberOfPageRead,
           percentage:
-              '${(item!.numberOfPageRead / item!.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
+              '${(item.numberOfPageRead / item.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
           pressRead: () => context.go(
             '${AppPage.reading.routePath}/${item.id}',
             extra: item,
@@ -150,7 +149,7 @@ class ReadingBookList extends StatelessWidget {
         );
       },
       separatorBuilder: (BuildContext context, int index) {
-        return const SizedBox(height: 40);
+        return SizedBox(height: 40.0.h);
       },
     );
   }
