@@ -4,6 +4,7 @@ import 'package:app_authentication/common/domain/states/data_source_exception.da
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:lisa_app/common/datas/datasources/firebase_collections.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 

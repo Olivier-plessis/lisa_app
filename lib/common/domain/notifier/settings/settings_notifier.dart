@@ -1,4 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/state/settings/settings_details.dart';
 import 'package:lisa_app/common/domain/state/settings/settings_state.dart';

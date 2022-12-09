@@ -17,13 +17,14 @@ A few resources to started this project:
 - [X] Clean Architecture
 - [X] Firebase configuration
 - [X] google sing_in authentication
-- [ ] Dio - call api google books
-- [ ] provider  - Riverpod 2.0
-- [ ] state - Freezed
-- [ ] hive - Save data inside local db
-- [ ] search
-- [ ] wishlist
-- [ ] unit test
+
+- [X] Dio - call api google books
+- [X] provider  - Riverpod 2.0
+- [X] state - Freezed
+- [X] search
+- [X] wishlist
+- [ ] test
+- [ ] web development
 
 
 ##Design

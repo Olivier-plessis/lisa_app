@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:lisa_app/common/domain/state/settings/settings_details.dart';
 
 part 'settings_state.freezed.dart';
