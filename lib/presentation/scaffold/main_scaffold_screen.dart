@@ -10,6 +10,7 @@ class MainScaffoldScreen extends StatelessWidget {
   });
 
   final Widget child;
+  final Color backgroundColor;
 
   final Color backgroundColor;
 
