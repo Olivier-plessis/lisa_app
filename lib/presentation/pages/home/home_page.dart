@@ -1,12 +1,15 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/reading/reading_list_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
+
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/common/utils/string_formater.dart';
 import 'package:lisa_app/presentation/pages/home/widget/home_flex_row.dart';
@@ -84,7 +87,9 @@ class _ReadingList extends ConsumerWidget {
     final List<SingleBook> singleBooks = ref.watch(readingListProvider);
     return Material(
       color: Colors.transparent,
-      child: ref.watch<ReadingListState>(readingListNotifierProvider).maybeMap(
+      child: ref
+          .watch<SingleBookListState>(readingListNotifierProvider)
+          .maybeMap(
             orElse: () => const SizedBox.shrink(),
             empty: (_) => SizedBox(
               height: MediaQuery.of(context).size.height -
@@ -214,7 +219,7 @@ class _FavoriteListCard extends StatelessWidget {
     return BookCard(
       title: item.volumeInfo!.title,
       textWidth: 140.w,
-      positionActionButton: 80.w,
+      positionActionButton: 76.w,
       auth: item.volumeInfo!.authors.first,
       image: '${item.volumeInfo?.imageLinks?.medium}',
       pressRead: pressRead,

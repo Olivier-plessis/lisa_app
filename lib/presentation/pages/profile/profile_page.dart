@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,7 +22,8 @@ class ProfilePage extends ConsumerWidget {
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
               title: ElevatedButton(
-                  onPressed: () => context.go('/'), child: const Text('retour')),
+                  onPressed: () => context.go('/'),
+                  child: const Text('retour')),
               background: Hero(
                 tag: 'avatar-${currentUser?.uid}',
                 child:

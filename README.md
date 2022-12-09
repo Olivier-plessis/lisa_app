@@ -17,7 +17,6 @@ A few resources to started this project:
 - [X] Clean Architecture
 - [X] Firebase configuration
 - [X] google sing_in authentication
-
 - [X] Dio - call api google books
 - [X] provider  - Riverpod 2.0
 - [X] state - Freezed

@@ -6,12 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lisa_app/common/datas/repositories/favorite_repository.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 
-class FavoriteListNotifier extends StateNotifier<FavoriteListState> {
+class FavoriteListNotifier extends StateNotifier<SingleBookListState> {
   FavoriteListNotifier(
     this._favoriteRepository,
-  ) : super(const FavoriteListState.initial()) {
+  ) : super(const SingleBookListState.initial()) {
     getFavorites();
   }
 
@@ -19,17 +19,17 @@ class FavoriteListNotifier extends StateNotifier<FavoriteListState> {
   late StreamSubscription<dynamic> _streamSubscription;
 
   Future<void> getFavorites() async {
-    state = const FavoriteListState.loading();
+    state = const SingleBookListState.loading();
 
     _streamSubscription = _favoriteRepository
         .getFavorites()
         .listen((Either<Failure, List<SingleBook>> result) {
       state = result.fold(
-        (Failure l) => FavoriteListState.error(error: l),
+        (Failure l) => SingleBookListState.error(error: l),
         (List<SingleBook> r) {
           if (r.isEmpty)
-            return const FavoriteListState.empty(singleBooks: <SingleBook>[]);
-          return FavoriteListState.loaded(singleBooks: r);
+            return const SingleBookListState.empty(singleBooks: <SingleBook>[]);
+          return SingleBookListState.loaded(singleBooks: r);
         },
       );
     });

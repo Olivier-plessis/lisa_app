@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
-import 'package:flutter/material.dart';
+
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 
 class BookCard extends StatelessWidget {
@@ -15,6 +17,7 @@ class BookCard extends StatelessWidget {
     this.buttonLabel = 'Read',
     this.textWidth = 200,
     this.positionActionButton = 37,
+    this.isStarted,
   });
 
   final String image;
@@ -26,6 +29,7 @@ class BookCard extends StatelessWidget {
   final String? buttonLabel;
   final double textWidth;
   final double positionActionButton;
+  final bool? isStarted;
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +98,26 @@ class BookCard extends StatelessWidget {
               ),
             ),
           ),
+          if (isStarted == true)
+            Positioned(
+              top: 55,
+              right: 15,
+              child: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  color: ColorTheme.mainGreenColor,
+                  borderRadius: BorderRadius.circular(10.0),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      offset: const Offset(0, 3),
+                      blurRadius: 5,
+                      color: ColorTheme.kShadowColor.withOpacity(.84),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           Positioned(
             top: 100,
             child: SizedBox(

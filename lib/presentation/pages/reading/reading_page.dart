@@ -1,10 +1,13 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/reading/reading_list_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
+
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/presentation/widgets/book/book_card.dart';
 import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
@@ -65,7 +68,7 @@ class _ReadingList extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          ref.watch<ReadingListState>(readingListNotifierProvider).maybeMap(
+          ref.watch<SingleBookListState>(readingListNotifierProvider).maybeMap(
                 orElse: () => const SizedBox.shrink(),
                 empty: (_) => SizedBox(
                   height: MediaQuery.of(context).size.height -
@@ -141,6 +144,7 @@ class _BookListCard extends StatelessWidget {
       auth: item.volumeInfo!.authors.first,
       image: '${item.volumeInfo?.imageLinks?.medium}',
       pressRead: pressRead,
+      isStarted: item.isStarted,
     );
   }
 }

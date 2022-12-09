@@ -1,15 +1,18 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_authentication/authentication.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/state/settings/settings_details.dart';
 import 'package:lisa_app/common/domain/state/settings/settings_state.dart';
 import 'package:lisa_app/common/routes/router.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/common/utils/theme_mode.dart' as utils;
+
 import 'package:lisa_app/main/app_environment.dart';
 
 class MainApp extends ConsumerWidget {

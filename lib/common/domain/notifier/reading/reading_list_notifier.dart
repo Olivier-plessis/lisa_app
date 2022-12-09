@@ -6,12 +6,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:lisa_app/common/datas/repositories/reading_repository.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/reading/reading_list_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 
-class ReadingListNotifier extends StateNotifier<ReadingListState> {
+class ReadingListNotifier extends StateNotifier<SingleBookListState> {
   ReadingListNotifier(
     this._readingRepository,
-  ) : super(const ReadingListState.initial()) {
+  ) : super(const SingleBookListState.initial()) {
     getReadingBooks();
   }
 
@@ -19,17 +19,17 @@ class ReadingListNotifier extends StateNotifier<ReadingListState> {
   late StreamSubscription<dynamic> _streamSubscription;
 
   Future<void> getReadingBooks() async {
-    state = const ReadingListState.loading();
+    state = const SingleBookListState.loading();
 
     _streamSubscription = _readingRepository
         .getReadingBooks()
         .listen((Either<Failure, List<SingleBook>> result) {
       state = result.fold(
-        (Failure l) => ReadingListState.error(error: l),
+        (Failure l) => SingleBookListState.error(error: l),
         (List<SingleBook> r) {
           if (r.isEmpty)
-            return const ReadingListState.empty(singleBooks: <SingleBook>[]);
-          return ReadingListState.loaded(singleBooks: r);
+            return const SingleBookListState.empty(singleBooks: <SingleBook>[]);
+          return SingleBookListState.loaded(singleBooks: r);
         },
       );
     });

@@ -23,9 +23,7 @@ class SingleBookNotifier extends StateNotifier<SingleBookState> {
     final Either<Failure, SingleBook> result =
         await _bookRepository.showBooksDetails(id: bookId);
 
-    state = result.fold(
-        (Failure failure) =>
-            SingleBookState.error(error: failure.failureMessage()),
-        (SingleBook data) => SingleBookState.loaded(singleBook: data));
+    state = result.fold((Failure l) => SingleBookState.error(error: l),
+        (SingleBook data) => SingleBookState.data(book: data));
   }
 }

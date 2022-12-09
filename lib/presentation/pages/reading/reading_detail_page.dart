@@ -10,7 +10,8 @@ import 'package:go_router/go_router.dart';
 
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/reading/reading_list_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
+
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/presentation/widgets/book/book_description.dart';
 import 'package:lisa_app/presentation/widgets/book/book_header.dart';
@@ -25,8 +26,9 @@ class ReadingDetailsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ReadingListState currentBook =
-        ref.watch<ReadingListState>(readingListNotifierProvider);
+    final SingleBookListState currentBook =
+        ref.watch<SingleBookListState>(readingListNotifierProvider);
+
     currentBook.maybeMap(
       loaded: (value) => value.singleBooks.first.id == singleBookId,
       orElse: () {},

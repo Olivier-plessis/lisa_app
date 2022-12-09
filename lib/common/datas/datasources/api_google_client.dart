@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:app_authentication/common/domain/states/failure.dart';
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
+
 import 'package:lisa_app/common/domain/models/book/book.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:retrofit/retrofit.dart';
 
 part 'api_google_client.g.dart';
 
