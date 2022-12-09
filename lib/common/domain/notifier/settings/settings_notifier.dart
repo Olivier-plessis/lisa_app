@@ -20,6 +20,7 @@ class SettingsNotifier extends StateNotifier<SettingsState> {
             utils.defaultLanguage;
     final String theme = (await ref.read(storageDatabase).read(key: 'theme')) ??
         utils.defaultTheme;
+
     details = SettingsDetails(currentLanguage: language, themeMode: theme);
     state = SettingsState.data(details: details);
   }

@@ -15,6 +15,7 @@ class ReadingNotifier extends StateNotifier<SingleBookState> {
 
   Future<void> addBookToReadingList({required SingleBook book}) async {
     state = const SingleBookState.submitting();
+
     final Either<Failure, Unit> response =
         await _readingRepository.addBookToReadingList(book: book);
 
@@ -28,6 +29,7 @@ class ReadingNotifier extends StateNotifier<SingleBookState> {
 
   Future<void> removeFromReadingList({required SingleBook book}) async {
     state = const SingleBookState.submitting();
+
     final Either<Failure, Unit> response =
         await _readingRepository.removeFromReadingList(book: book);
 
@@ -41,6 +43,7 @@ class ReadingNotifier extends StateNotifier<SingleBookState> {
 
   Future<void> startToReadBook({required SingleBook book}) async {
     state = const SingleBookState.submitting();
+
     final Either<Failure, Unit> response =
         await _readingRepository.startToReadBook(book: book);
 
@@ -55,6 +58,7 @@ class ReadingNotifier extends StateNotifier<SingleBookState> {
   Future<void> updatePageReadBook(
       {required SingleBook book, required int numberOfPageRead}) async {
     state = const SingleBookState.submitting();
+
     final Either<Failure, Unit> response = await _readingRepository
         .updatePageReadBook(book: book, numberOfPageRead: numberOfPageRead);
 

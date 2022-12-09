@@ -12,6 +12,7 @@ import 'package:lisa_app/common/domain/state/settings/settings_state.dart';
 import 'package:lisa_app/common/routes/router.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/common/utils/theme_mode.dart' as utils;
+
 import 'package:lisa_app/main/app_environment.dart';
 
 class MainApp extends ConsumerWidget {

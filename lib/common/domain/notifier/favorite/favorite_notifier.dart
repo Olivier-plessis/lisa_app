@@ -14,6 +14,7 @@ class FavoriteNotifier extends StateNotifier<SingleBookState> {
 
   Future<void> addToFavorites({required SingleBook book}) async {
     state = const SingleBookState.submitting();
+
     final Either<Failure, Unit> response =
         await _favouriteRepository.addToFavorites(book: book);
 
@@ -25,6 +26,7 @@ class FavoriteNotifier extends StateNotifier<SingleBookState> {
 
   Future<void> removeFromFavorites({required SingleBook book}) async {
     state = const SingleBookState.submitting();
+
     final Either<Failure, Unit> response =
         await _favouriteRepository.removeFromFavorites(book: book);
 

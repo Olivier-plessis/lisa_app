@@ -1,4 +1,5 @@
 import 'package:app_authentication/authentication.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
