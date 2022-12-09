@@ -23,7 +23,7 @@ A few resources to started this project:
 - [X] search
 - [X] wishlist
 - [ ] test
-
+- [ ] web development
 
 
 ##Design
