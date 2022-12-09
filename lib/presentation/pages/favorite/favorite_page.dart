@@ -1,10 +1,12 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:lisa_app/common/datas/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
-import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/presentation/widgets/book/book_card.dart';
 import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
@@ -15,40 +17,42 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return CustomScrollView(physics: const ClampingScrollPhysics(), slivers: <Widget>[
-      SliverAppBar(
-        backgroundColor: Colors.transparent,
-        expandedHeight: 184.0,
-        flexibleSpace: FlexibleSpaceBar(
-          centerTitle: true,
-          titlePadding: const EdgeInsets.only(top: 10),
-          title: Container(
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.only(
-                  top: size.height * .12,
-                  left: size.width * .1,
-                  right: size.width * .02),
-              height: size.height * .48,
-              decoration: const BoxDecoration(
-                color: ColorTheme.orangeLightColor,
-                // image: DecorationImage(
-                //   image: AssetImage(Images.bg),
-                //   fit: BoxFit.fitWidth,
-                // ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: BookSliverAppBar(
-                size: size,
-                title: 'My favorite list &',
-                subtitle: 'Blabla',
-              )),
-        ),
-      ),
-      const _FavoritesList(),
-    ]);
+    return CustomScrollView(
+        physics: const ClampingScrollPhysics(),
+        slivers: <Widget>[
+          SliverAppBar(
+            backgroundColor: Colors.transparent,
+            expandedHeight: 184.0,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              titlePadding: const EdgeInsets.only(top: 10),
+              title: Container(
+                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.only(
+                      top: size.height * .12,
+                      left: size.width * .1,
+                      right: size.width * .02),
+                  height: size.height * .48,
+                  decoration: const BoxDecoration(
+                    color: ColorTheme.orangeLightColor,
+                    // image: DecorationImage(
+                    //   image: AssetImage(Images.bg),
+                    //   fit: BoxFit.fitWidth,
+                    // ),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: BookSliverAppBar(
+                    size: size,
+                    title: 'My favorite list &',
+                    subtitle: 'Blabla',
+                  )),
+            ),
+          ),
+          const _FavoritesList(),
+        ]);
   }
 }
 
@@ -63,7 +67,7 @@ class _FavoritesList extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ref.watch<FavoriteListState>(favoriteListNotifierProvider).maybeMap(
+          ref.watch<SingleBookListState>(favoriteListNotifierProvider).maybeMap(
                 orElse: () => const SizedBox.shrink(),
                 empty: (_) => SizedBox(
                   height: MediaQuery.of(context).size.height -

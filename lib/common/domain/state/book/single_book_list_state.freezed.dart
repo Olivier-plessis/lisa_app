@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'reading_list_state.dart';
+part of 'single_book_list_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ReadingListState {
+mixin _$SingleBookListState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -75,16 +75,16 @@ mixin _$ReadingListState {
 }
 
 /// @nodoc
-abstract class $ReadingListStateCopyWith<$Res> {
-  factory $ReadingListStateCopyWith(
-          ReadingListState value, $Res Function(ReadingListState) then) =
-      _$ReadingListStateCopyWithImpl<$Res, ReadingListState>;
+abstract class $SingleBookListStateCopyWith<$Res> {
+  factory $SingleBookListStateCopyWith(
+          SingleBookListState value, $Res Function(SingleBookListState) then) =
+      _$SingleBookListStateCopyWithImpl<$Res, SingleBookListState>;
 }
 
 /// @nodoc
-class _$ReadingListStateCopyWithImpl<$Res, $Val extends ReadingListState>
-    implements $ReadingListStateCopyWith<$Res> {
-  _$ReadingListStateCopyWithImpl(this._value, this._then);
+class _$SingleBookListStateCopyWithImpl<$Res, $Val extends SingleBookListState>
+    implements $SingleBookListStateCopyWith<$Res> {
+  _$SingleBookListStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,7 +101,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$ReadingListStateCopyWithImpl<$Res, _$_Initial>
+    extends _$SingleBookListStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -114,7 +114,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'ReadingListState.initial()';
+    return 'SingleBookListState.initial()';
   }
 
   @override
@@ -207,7 +207,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ReadingListState {
+abstract class _Initial implements SingleBookListState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -220,7 +220,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$ReadingListStateCopyWithImpl<$Res, _$_Loading>
+    extends _$SingleBookListStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -233,7 +233,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'ReadingListState.loading()';
+    return 'SingleBookListState.loading()';
   }
 
   @override
@@ -326,7 +326,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements ReadingListState {
+abstract class _Loading implements SingleBookListState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -340,7 +340,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadedCopyWithImpl<$Res>
-    extends _$ReadingListStateCopyWithImpl<$Res, _$_Loaded>
+    extends _$SingleBookListStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
       : super(_value, _then);
@@ -374,7 +374,7 @@ class _$_Loaded implements _Loaded {
 
   @override
   String toString() {
-    return 'ReadingListState.loaded(singleBooks: $singleBooks)';
+    return 'SingleBookListState.loaded(singleBooks: $singleBooks)';
   }
 
   @override
@@ -477,7 +477,7 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements ReadingListState {
+abstract class _Loaded implements SingleBookListState {
   const factory _Loaded({required final List<SingleBook> singleBooks}) =
       _$_Loaded;
 
@@ -497,7 +497,7 @@ abstract class _$$_EmptyCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EmptyCopyWithImpl<$Res>
-    extends _$ReadingListStateCopyWithImpl<$Res, _$_Empty>
+    extends _$SingleBookListStateCopyWithImpl<$Res, _$_Empty>
     implements _$$_EmptyCopyWith<$Res> {
   __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then)
       : super(_value, _then);
@@ -531,7 +531,7 @@ class _$_Empty implements _Empty {
 
   @override
   String toString() {
-    return 'ReadingListState.empty(singleBooks: $singleBooks)';
+    return 'SingleBookListState.empty(singleBooks: $singleBooks)';
   }
 
   @override
@@ -634,7 +634,7 @@ class _$_Empty implements _Empty {
   }
 }
 
-abstract class _Empty implements ReadingListState {
+abstract class _Empty implements SingleBookListState {
   const factory _Empty({required final List<SingleBook> singleBooks}) =
       _$_Empty;
 
@@ -656,7 +656,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$ReadingListStateCopyWithImpl<$Res, _$_Error>
+    extends _$SingleBookListStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
@@ -693,7 +693,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'ReadingListState.error(error: $error)';
+    return 'SingleBookListState.error(error: $error)';
   }
 
   @override
@@ -794,7 +794,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements ReadingListState {
+abstract class _Error implements SingleBookListState {
   const factory _Error({required final Failure error}) = _$_Error;
 
   Failure get error;

@@ -1,6 +1,7 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_ui/app_ui.dart';
 
 class ExpandableText extends StatefulWidget {
   const ExpandableText(

@@ -20,24 +20,30 @@ mixin _$SingleBookState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(SingleBook singleBook) loaded,
-    required TResult Function(String error) error,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(SingleBook singleBook)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(SingleBook singleBook)? loaded,
-    TResult Function(String error)? error,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +51,30 @@ mixin _$SingleBookState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,8 +137,10 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(SingleBook singleBook) loaded,
-    required TResult Function(String error) error,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
     return initial();
   }
@@ -136,8 +150,10 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(SingleBook singleBook)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
     return initial?.call();
   }
@@ -147,8 +163,10 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(SingleBook singleBook)? loaded,
-    TResult Function(String error)? error,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -162,8 +180,10 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
     return initial(this);
   }
@@ -173,8 +193,10 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
     return initial?.call(this);
   }
@@ -184,8 +206,10 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -238,8 +262,10 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(SingleBook singleBook) loaded,
-    required TResult Function(String error) error,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
     return loading();
   }
@@ -249,8 +275,10 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(SingleBook singleBook)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
     return loading?.call();
   }
@@ -260,8 +288,10 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(SingleBook singleBook)? loaded,
-    TResult Function(String error)? error,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -275,8 +305,10 @@ class _$_Loading implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
     return loading(this);
   }
@@ -286,8 +318,10 @@ class _$_Loading implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
     return loading?.call(this);
   }
@@ -297,8 +331,10 @@ class _$_Loading implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -313,84 +349,51 @@ abstract class _Loading implements SingleBookState {
 }
 
 /// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({SingleBook singleBook});
-
-  $SingleBookCopyWith<$Res> get singleBook;
+abstract class _$$_SubmittingCopyWith<$Res> {
+  factory _$$_SubmittingCopyWith(
+          _$_Submitting value, $Res Function(_$_Submitting) then) =
+      __$$_SubmittingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadedCopyWithImpl<$Res>
-    extends _$SingleBookStateCopyWithImpl<$Res, _$_Loaded>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
+class __$$_SubmittingCopyWithImpl<$Res>
+    extends _$SingleBookStateCopyWithImpl<$Res, _$_Submitting>
+    implements _$$_SubmittingCopyWith<$Res> {
+  __$$_SubmittingCopyWithImpl(
+      _$_Submitting _value, $Res Function(_$_Submitting) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? singleBook = null,
-  }) {
-    return _then(_$_Loaded(
-      singleBook: null == singleBook
-          ? _value.singleBook
-          : singleBook // ignore: cast_nullable_to_non_nullable
-              as SingleBook,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SingleBookCopyWith<$Res> get singleBook {
-    return $SingleBookCopyWith<$Res>(_value.singleBook, (value) {
-      return _then(_value.copyWith(singleBook: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$_Loaded implements _Loaded {
-  const _$_Loaded({required this.singleBook});
-
-  @override
-  final SingleBook singleBook;
+class _$_Submitting implements _Submitting {
+  const _$_Submitting();
 
   @override
   String toString() {
-    return 'SingleBookState.loaded(singleBook: $singleBook)';
+    return 'SingleBookState.submitting()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
-            (identical(other.singleBook, singleBook) ||
-                other.singleBook == singleBook));
+        (other.runtimeType == runtimeType && other is _$_Submitting);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, singleBook);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(SingleBook singleBook) loaded,
-    required TResult Function(String error) error,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
-    return loaded(singleBook);
+    return submitting();
   }
 
   @override
@@ -398,10 +401,12 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(SingleBook singleBook)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
-    return loaded?.call(singleBook);
+    return submitting?.call();
   }
 
   @override
@@ -409,12 +414,14 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(SingleBook singleBook)? loaded,
-    TResult Function(String error)? error,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(singleBook);
+    if (submitting != null) {
+      return submitting();
     }
     return orElse();
   }
@@ -424,10 +431,12 @@ class _$_Loaded implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
-    return loaded(this);
+    return submitting(this);
   }
 
   @override
@@ -435,10 +444,12 @@ class _$_Loaded implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
-    return loaded?.call(this);
+    return submitting?.call(this);
   }
 
   @override
@@ -446,24 +457,185 @@ class _$_Loaded implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (submitting != null) {
+      return submitting(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loaded implements SingleBookState {
-  const factory _Loaded({required final SingleBook singleBook}) = _$_Loaded;
+abstract class _Submitting implements SingleBookState {
+  const factory _Submitting() = _$_Submitting;
+}
 
-  SingleBook get singleBook;
+/// @nodoc
+abstract class _$$_DataCopyWith<$Res> {
+  factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
+      __$$_DataCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SingleBook book});
+
+  $SingleBookCopyWith<$Res> get book;
+}
+
+/// @nodoc
+class __$$_DataCopyWithImpl<$Res>
+    extends _$SingleBookStateCopyWithImpl<$Res, _$_Data>
+    implements _$$_DataCopyWith<$Res> {
+  __$$_DataCopyWithImpl(_$_Data _value, $Res Function(_$_Data) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? book = null,
+  }) {
+    return _then(_$_Data(
+      book: null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as SingleBook,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SingleBookCopyWith<$Res> get book {
+    return $SingleBookCopyWith<$Res>(_value.book, (value) {
+      return _then(_value.copyWith(book: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_Data implements _Data {
+  const _$_Data({required this.book});
+
+  @override
+  final SingleBook book;
+
+  @override
+  String toString() {
+    return 'SingleBookState.data(book: $book)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Data &&
+            (identical(other.book, book) || other.book == book));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, book);
+
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      throw _privateConstructorUsedError;
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_DataCopyWith<_$_Data> get copyWith =>
+      __$$_DataCopyWithImpl<_$_Data>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
+  }) {
+    return data(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
+  }) {
+    return data?.call(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(book);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
+  }) {
+    return data(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+  }) {
+    return data?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
+    TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Data implements SingleBookState {
+  const factory _Data({required final SingleBook book}) = _$_Data;
+
+  SingleBook get book;
+  @JsonKey(ignore: true)
+  _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -471,7 +643,9 @@ abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({Failure error});
+
+  $FailureCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -490,8 +664,16 @@ class __$$_ErrorCopyWithImpl<$Res>
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Failure,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res> get error {
+    return $FailureCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 
@@ -501,7 +683,7 @@ class _$_Error implements _Error {
   const _$_Error({required this.error});
 
   @override
-  final String error;
+  final Failure error;
 
   @override
   String toString() {
@@ -530,8 +712,10 @@ class _$_Error implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(SingleBook singleBook) loaded,
-    required TResult Function(String error) error,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
   }) {
     return error(this.error);
   }
@@ -541,8 +725,10 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(SingleBook singleBook)? loaded,
-    TResult? Function(String error)? error,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
   }) {
     return error?.call(this.error);
   }
@@ -552,8 +738,10 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(SingleBook singleBook)? loaded,
-    TResult Function(String error)? error,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -567,8 +755,10 @@ class _$_Error implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
     required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
   }) {
     return error(this);
   }
@@ -578,8 +768,10 @@ class _$_Error implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
   }) {
     return error?.call(this);
   }
@@ -589,8 +781,10 @@ class _$_Error implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
     TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -601,10 +795,175 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements SingleBookState {
-  const factory _Error({required final String error}) = _$_Error;
+  const factory _Error({required final Failure error}) = _$_Error;
 
-  String get error;
+  Failure get error;
   @JsonKey(ignore: true)
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_EmptyCopyWith<$Res> {
+  factory _$$_EmptyCopyWith(_$_Empty value, $Res Function(_$_Empty) then) =
+      __$$_EmptyCopyWithImpl<$Res>;
+  @useResult
+  $Res call({SingleBook book});
+
+  $SingleBookCopyWith<$Res> get book;
+}
+
+/// @nodoc
+class __$$_EmptyCopyWithImpl<$Res>
+    extends _$SingleBookStateCopyWithImpl<$Res, _$_Empty>
+    implements _$$_EmptyCopyWith<$Res> {
+  __$$_EmptyCopyWithImpl(_$_Empty _value, $Res Function(_$_Empty) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? book = null,
+  }) {
+    return _then(_$_Empty(
+      book: null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as SingleBook,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SingleBookCopyWith<$Res> get book {
+    return $SingleBookCopyWith<$Res>(_value.book, (value) {
+      return _then(_value.copyWith(book: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_Empty implements _Empty {
+  const _$_Empty({required this.book});
+
+  @override
+  final SingleBook book;
+
+  @override
+  String toString() {
+    return 'SingleBookState.empty(book: $book)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Empty &&
+            (identical(other.book, book) || other.book == book));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, book);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_EmptyCopyWith<_$_Empty> get copyWith =>
+      __$$_EmptyCopyWithImpl<_$_Empty>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() submitting,
+    required TResult Function(SingleBook book) data,
+    required TResult Function(Failure error) error,
+    required TResult Function(SingleBook book) empty,
+  }) {
+    return empty(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? submitting,
+    TResult? Function(SingleBook book)? data,
+    TResult? Function(Failure error)? error,
+    TResult? Function(SingleBook book)? empty,
+  }) {
+    return empty?.call(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? submitting,
+    TResult Function(SingleBook book)? data,
+    TResult Function(Failure error)? error,
+    TResult Function(SingleBook book)? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(book);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Submitting value) submitting,
+    required TResult Function(_Data value) data,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Empty value) empty,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Submitting value)? submitting,
+    TResult? Function(_Data value)? data,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Empty value)? empty,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Submitting value)? submitting,
+    TResult Function(_Data value)? data,
+    TResult Function(_Error value)? error,
+    TResult Function(_Empty value)? empty,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Empty implements SingleBookState {
+  const factory _Empty({required final SingleBook book}) = _$_Empty;
+
+  SingleBook get book;
+  @JsonKey(ignore: true)
+  _$$_EmptyCopyWith<_$_Empty> get copyWith =>
       throw _privateConstructorUsedError;
 }

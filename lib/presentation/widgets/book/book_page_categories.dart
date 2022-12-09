@@ -1,5 +1,6 @@
-import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_ui/app_ui.dart';
 
 Iterable<E> mapIndexed<E, T>(
     Iterable<T> items, E Function(int index, T item) f) sync* {

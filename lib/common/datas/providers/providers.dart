@@ -20,11 +20,8 @@ import 'package:lisa_app/common/domain/notifier/reading/reading_list_notifier.da
 import 'package:lisa_app/common/domain/notifier/reading/reading_notifier.dart';
 import 'package:lisa_app/common/domain/notifier/settings/settings_notifier.dart';
 import 'package:lisa_app/common/domain/state/book/book_state.dart';
+import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_state.dart';
-import 'package:lisa_app/common/domain/state/favorite/favorite_list_state.dart';
-import 'package:lisa_app/common/domain/state/favorite/favorite_state.dart';
-import 'package:lisa_app/common/domain/state/reading/reading_list_state.dart';
-import 'package:lisa_app/common/domain/state/reading/reading_state.dart';
 import 'package:lisa_app/common/domain/state/settings/settings_state.dart';
 import 'package:lisa_app/main/app_environment.dart';
 
@@ -92,19 +89,21 @@ final Provider<FavoriteRepository> favoriteRepositoryProvider =
     Provider<FavoriteRepository>((ProviderRef<FavoriteRepository> ref) =>
         FavoriteRepository(ref.watch(favoriteDataSourceProvider)));
 
-final StateNotifierProvider<FavoriteNotifier, FavoriteState>
+final StateNotifierProvider<FavoriteNotifier, SingleBookState>
     favoriteNotifierProvider =
-    StateNotifierProvider<FavoriteNotifier, FavoriteState>(
-  (StateNotifierProviderRef<FavoriteNotifier, FavoriteState> ref) =>
+    StateNotifierProvider<FavoriteNotifier, SingleBookState>(
+  (StateNotifierProviderRef<FavoriteNotifier, SingleBookState> ref) =>
       FavoriteNotifier(
     ref.watch(favoriteRepositoryProvider),
   ),
 );
 
-final AutoDisposeStateNotifierProvider<FavoriteListNotifier, FavoriteListState>
-    favoriteListNotifierProvider =
-    StateNotifierProvider.autoDispose<FavoriteListNotifier, FavoriteListState>(
-  (AutoDisposeStateNotifierProviderRef<FavoriteListNotifier, FavoriteListState>
+final AutoDisposeStateNotifierProvider<FavoriteListNotifier,
+        SingleBookListState> favoriteListNotifierProvider =
+    StateNotifierProvider.autoDispose<FavoriteListNotifier,
+        SingleBookListState>(
+  (AutoDisposeStateNotifierProviderRef<FavoriteListNotifier,
+              SingleBookListState>
           ref) =>
       FavoriteListNotifier(
     ref.watch(favoriteRepositoryProvider),
@@ -132,17 +131,17 @@ final Provider<ReadingRepository> readingRepositoryProvider =
     Provider<ReadingRepository>((ProviderRef<ReadingRepository> ref) =>
         ReadingRepository(ref.watch(readingDataSourceProvider)));
 
-final StateNotifierProvider<ReadingNotifier, ReadingState>
+final StateNotifierProvider<ReadingNotifier, SingleBookState>
     readingNotifierProvider =
-    StateNotifierProvider<ReadingNotifier, ReadingState>(
-  (StateNotifierProviderRef<ReadingNotifier, ReadingState> ref) =>
+    StateNotifierProvider<ReadingNotifier, SingleBookState>(
+  (StateNotifierProviderRef<ReadingNotifier, SingleBookState> ref) =>
       ReadingNotifier(ref.watch(readingRepositoryProvider)),
 );
 
-final AutoDisposeStateNotifierProvider<ReadingListNotifier, ReadingListState>
+final AutoDisposeStateNotifierProvider<ReadingListNotifier, SingleBookListState>
     readingListNotifierProvider =
-    StateNotifierProvider.autoDispose<ReadingListNotifier, ReadingListState>(
-  (AutoDisposeStateNotifierProviderRef<ReadingListNotifier, ReadingListState>
+    StateNotifierProvider.autoDispose<ReadingListNotifier, SingleBookListState>(
+  (AutoDisposeStateNotifierProviderRef<ReadingListNotifier, SingleBookListState>
           ref) =>
       ReadingListNotifier(
     ref.watch(readingRepositoryProvider),
