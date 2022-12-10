@@ -13,11 +13,11 @@ import 'package:lisa_app/presentation/widgets/book/book_card.dart';
 
 import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
 
-class FavoritePage extends StatelessWidget {
+class FavoritePage extends ConsumerWidget {
   const FavoritePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final Size size = MediaQuery.of(context).size;
     return CustomScrollView(
         physics: const ClampingScrollPhysics(),
