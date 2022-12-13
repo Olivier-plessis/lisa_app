@@ -11,7 +11,8 @@ abstract class IReadingRepository {
   Future<Either<Failure, Unit>> removeFromReadingList(
       {required SingleBook book});
   Stream<Either<Failure, List<SingleBook>>> getReadingBooks();
-  Future<Either<Failure, Unit>> startToReadBook({required SingleBook book});
+  Future<Either<Failure, Unit>> startToReadBook(
+      {required SingleBook book, required BookStatus status});
   Future<Either<Failure, Unit>> updatePageReadBook(
       {required SingleBook book, required int numberOfPageRead});
 }
@@ -61,11 +62,10 @@ class ReadingRepository implements IReadingRepository {
 
   @override
   Future<Either<Failure, Unit>> startToReadBook(
-      {required SingleBook book}) async {
+      {required SingleBook book, required BookStatus status}) async {
     try {
       final Unit response = await _readingRemoteDataSource.startToReadBook(
-        book: book,
-      );
+          book: book, status: status);
       return right(response);
     } on DataSourceException catch (_) {
       return left(const Failure.serverError());

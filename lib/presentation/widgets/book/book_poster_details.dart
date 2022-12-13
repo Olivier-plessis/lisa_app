@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
+import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 
@@ -12,7 +13,7 @@ class BookPosterDetails extends StatelessWidget {
     this.onTapDelete,
     this.onTapToFavorite,
     this.restoreToFavorite = false,
-    this.starToRead = false,
+    this.starToRead = BookStatus.pending,
     this.deleteTo = false,
     required this.buttonText,
     this.deleteButtonLeftPosition = 170.0,
@@ -21,7 +22,7 @@ class BookPosterDetails extends StatelessWidget {
   final String imageLink;
   final VoidCallback? onTapDelete;
   final VoidCallback? onTapToFavorite;
-  final bool? starToRead;
+  final BookStatus? starToRead;
   final bool? deleteTo;
   final bool? restoreToFavorite;
   final VoidCallback onTapButton;
@@ -58,7 +59,7 @@ class BookPosterDetails extends StatelessWidget {
                       const BorderRadius.only(topLeft: Radius.circular(10)),
                 )),
           ),
-          if (restoreToFavorite == true && starToRead == false)
+          if (restoreToFavorite == true && starToRead == BookStatus.pending)
             Positioned(
                 left: 110,
                 bottom: 20,
@@ -80,7 +81,7 @@ class BookPosterDetails extends StatelessWidget {
                     ),
                   ),
                 )),
-          if (deleteTo == true && starToRead == false)
+          if (deleteTo == true && starToRead == BookStatus.pending)
             Positioned(
                 left: deleteButtonLeftPosition,
                 bottom: 20,
@@ -102,7 +103,7 @@ class BookPosterDetails extends StatelessWidget {
                     ),
                   ),
                 )),
-          if (starToRead == false)
+          if (starToRead == BookStatus.pending)
             Positioned(
                 right: 20,
                 bottom: 20,

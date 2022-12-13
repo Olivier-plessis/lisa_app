@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
+import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 
@@ -21,7 +22,7 @@ class HomeReadingCard extends StatelessWidget {
   final String author;
   final String? percentage;
   final int? numberOfPageRead;
-  final bool? isStarted;
+  final BookStatus? isStarted;
   final Function() pressRead;
 
   @override
@@ -56,7 +57,7 @@ class HomeReadingCard extends StatelessWidget {
               imagePath: image,
             ),
           ),
-          if (isStarted == true)
+          if (isStarted == BookStatus.inProgress)
             Positioned(
               top: 25,
               right: 15,

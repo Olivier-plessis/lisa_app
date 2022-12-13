@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
+import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
 Iterable<E> mapIndexed<E, T>(
     Iterable<T> items, E Function(int index, T item) f) sync* {
@@ -18,14 +19,14 @@ class BookPageCategories extends StatelessWidget {
     required this.pageCount,
     this.categories,
     this.numberOfPageRead,
-    this.isStarted = false,
+    this.isStarted,
     this.onTap,
   });
 
   final int pageCount;
   final String? categories;
   final String? numberOfPageRead;
-  final bool? isStarted;
+  final BookStatus? isStarted;
   final Function()? onTap;
 
   @override
@@ -56,7 +57,7 @@ class BookPageCategories extends StatelessWidget {
                 Wrap(
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: <Widget>[
-                    if (isStarted!)
+                    if (isStarted == BookStatus.inProgress)
                       Text('$numberOfPageRead / ',
                           style: textTheme.headline5!
                               .copyWith(color: ColorTheme.secondaryColor)),
@@ -66,7 +67,7 @@ class BookPageCategories extends StatelessWidget {
                     Text(' pages ',
                         style: textTheme.subtitle2!
                             .copyWith(color: ColorTheme.bodyTextColor)),
-                    if (isStarted!)
+                    if (isStarted == BookStatus.inProgress)
                       InkWell(
                         onTap: onTap,
                         child: const Icon(Icons.edit_outlined,

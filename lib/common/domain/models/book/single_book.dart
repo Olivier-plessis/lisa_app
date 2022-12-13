@@ -6,6 +6,8 @@ import 'package:lisa_app/common/domain/models/book/single_volume_info.dart';
 part 'single_book.freezed.dart';
 part 'single_book.g.dart';
 
+enum BookStatus { pending, inProgress, isFinished }
+
 @freezed
 class SingleBook with _$SingleBook {
   const factory SingleBook({
@@ -13,8 +15,8 @@ class SingleBook with _$SingleBook {
         String kind,
     @Default('')
         String id,
-    @Default(false)
-        bool isStarted,
+    @Default(BookStatus.pending)
+        BookStatus status,
     @Default(0)
         int numberOfPageRead,
     @TimestampOrNullConverter()

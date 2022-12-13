@@ -144,7 +144,10 @@ class _BookListCard extends StatelessWidget {
       auth: item.volumeInfo!.authors.first,
       image: '${item.volumeInfo?.imageLinks?.medium}',
       pressRead: pressRead,
-      isStarted: item.isStarted,
+      isStarted: item.status,
+      numberOfPageRead: item.numberOfPageRead,
+      percentage:
+          '${(item.numberOfPageRead / item.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
     );
   }
 }

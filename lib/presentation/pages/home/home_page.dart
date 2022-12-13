@@ -142,7 +142,7 @@ class ReadingBookList extends StatelessWidget {
           title: item.volumeInfo!.title,
           author: item.volumeInfo!.authors.first,
           image: '${item.volumeInfo?.imageLinks?.medium}',
-          isStarted: item.isStarted,
+          isStarted: item.status,
           numberOfPageRead: item.numberOfPageRead,
           percentage:
               '${(item.numberOfPageRead / item.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
