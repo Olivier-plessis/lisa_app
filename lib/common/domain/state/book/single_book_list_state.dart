@@ -15,3 +15,20 @@ class SingleBookListState with _$SingleBookListState {
       {required List<SingleBook> singleBooks}) = _Empty;
   const factory SingleBookListState.error({required Failure error}) = _Error;
 }
+
+enum FilterBooks { pending, inProgress, isFinished }
+
+extension FilterExtension on FilterBooks {
+  String getFiltersBooks() {
+    switch (this) {
+      case FilterBooks.pending:
+        return 'pending';
+      case FilterBooks.inProgress:
+        return 'in progress';
+      case FilterBooks.isFinished:
+        return 'finished';
+    }
+  }
+}
+
+List<String> getListOfFilters() => ['pending', 'in progress', 'finished'];

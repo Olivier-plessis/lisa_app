@@ -6,7 +6,7 @@ import 'package:atomic_ui/atomic_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:lisa_app/common/datas/providers/providers.dart';
+import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 
@@ -84,7 +84,7 @@ class _ReadingList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<SingleBook> singleBooks = ref.watch(readingListProvider);
+    final List<SingleBook> singleBooks = ref.watch(homeReadingListProvider);
     return Material(
       color: Colors.transparent,
       child: ref
@@ -138,19 +138,21 @@ class ReadingBookList extends StatelessWidget {
       itemCount: singleBook.length,
       itemBuilder: (BuildContext context, int index) {
         final SingleBook item = singleBook[index];
-        return HomeReadingCard(
-          title: item.volumeInfo!.title,
-          author: item.volumeInfo!.authors.first,
-          image: '${item.volumeInfo?.imageLinks?.medium}',
-          isStarted: item.isStarted,
-          numberOfPageRead: item.numberOfPageRead,
-          percentage:
-              '${(item.numberOfPageRead / item.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
-          pressRead: () => context.go(
-            '${AppPage.reading.routePath}/${item.id}',
-            extra: item,
-          ),
-        );
+        return item.status != BookStatus.inProgress
+            ? const SizedBox.shrink()
+            : HomeReadingCard(
+                title: item.volumeInfo!.title,
+                author: item.volumeInfo!.authors.first,
+                image: '${item.volumeInfo?.imageLinks?.medium}',
+                isStarted: item.status,
+                numberOfPageRead: item.numberOfPageRead,
+                percentage:
+                    '${(item.numberOfPageRead / item.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
+                pressRead: () => context.go(
+                  '${AppPage.reading.routePath}/${item.id}',
+                  extra: item,
+                ),
+              );
       },
       separatorBuilder: (BuildContext context, int index) {
         return SizedBox(height: 40.0.h);
@@ -229,65 +231,3 @@ class _FavoriteListCard extends StatelessWidget {
     );
   }
 }
-
-// class _FavoritesList extends ConsumerWidget {
-//   const _FavoritesList({super.key});
-//
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final List<SingleBook> singleBooks = ref.watch(favoritesListProvider);
-//     return ref.watch<FavoriteListState>(favoriteListNotifierProvider).maybeMap(
-//           orElse: () => const SizedBox.shrink(),
-//           empty: (_) => SizedBox(
-//             height: MediaQuery.of(context).size.height -
-//                 AppBar().preferredSize.height -
-//                 kBottomNavigationBarHeight -
-//                 kToolbarHeight,
-//             child: const Padding(
-//               padding: EdgeInsets.all(58.0),
-//               child: Center(
-//                 child: Text(
-//                   "You haven't added anything to favorites",
-//                   style: TextStyle(color: Colors.red),
-//                 ),
-//               ),
-//             ),
-//           ),
-//           loading: (_) => const CircularProgressIndicator(),
-//           loaded: (_) => FavoriteBookList(
-//             singleBook: singleBooks,
-//           ),
-//         );
-//   }
-// }
-//
-// class FavoriteBookList extends StatelessWidget {
-//   const FavoriteBookList({
-//     super.key,
-//     required this.singleBook,
-//   });
-//   final List<SingleBook> singleBook;
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.separated(
-//       shrinkWrap: true,
-//       physics: const ScrollPhysics(),
-//       itemCount: singleBook.length,
-//       itemBuilder: (BuildContext context, int index) {
-//         final SingleBook item = singleBook[index];
-//         return HomeFavoriteCard(
-//           title: item.volumeInfo!.title,
-//           author: item.volumeInfo!.authors.first,
-//           imagePath: '${item.volumeInfo?.imageLinks?.medium}',
-//           onTap: () => context.go(
-//             '${AppPage.reading.routePath}/${item.id}',
-//             extra: item,
-//           ),
-//         );
-//       },
-//       separatorBuilder: (BuildContext context, int index) {
-//         return const SizedBox(height: 40);
-//       },
-//     );
-//   }
-// }

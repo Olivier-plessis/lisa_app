@@ -139,6 +139,9 @@ final StateNotifierProvider<ReadingNotifier, SingleBookState>
       ReadingNotifier(ref.watch(readingRepositoryProvider)),
 );
 
+final AutoDisposeStateProvider<FilterBooks> filterProvider =
+    StateProvider.autoDispose<FilterBooks>((_) => FilterBooks.pending);
+
 final AutoDisposeStateNotifierProvider<ReadingListNotifier, SingleBookListState>
     readingListNotifierProvider =
     StateNotifierProvider.autoDispose<ReadingListNotifier, SingleBookListState>(
@@ -149,7 +152,7 @@ final AutoDisposeStateNotifierProvider<ReadingListNotifier, SingleBookListState>
   ),
 );
 
-final AutoDisposeProvider<List<SingleBook>> readingListProvider =
+final AutoDisposeProvider<List<SingleBook>> homeReadingListProvider =
     Provider.autoDispose<List<SingleBook>>(
         (AutoDisposeProviderRef<List<SingleBook>> ref) {
   final List<SingleBook> readingList = ref
@@ -158,4 +161,27 @@ final AutoDisposeProvider<List<SingleBook>> readingListProvider =
           orElse: () => <SingleBook>[], loaded: (state) => state.singleBooks);
 
   return readingList;
+});
+
+final AutoDisposeProvider<List<SingleBook>> readingListProvider =
+    Provider.autoDispose<List<SingleBook>>(
+        (AutoDisposeProviderRef<List<SingleBook>> ref) {
+  final FilterBooks filter = ref.watch(filterProvider);
+  final List<SingleBook> readingList = ref.watch(homeReadingListProvider);
+
+  switch (filter) {
+    case FilterBooks.pending:
+      return readingList.where((SingleBook element) {
+        return element.status == BookStatus.pending;
+      }).toList();
+    case FilterBooks.inProgress:
+      return readingList.where((SingleBook element) {
+        return element.status == BookStatus.inProgress;
+      }).toList();
+    case FilterBooks.isFinished:
+      return readingList
+          .where(
+              (SingleBook element) => element.status == BookStatus.isFinished)
+          .toList();
+  }
 });

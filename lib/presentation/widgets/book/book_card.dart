@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
+import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 
@@ -18,6 +19,8 @@ class BookCard extends StatelessWidget {
     this.textWidth = 200,
     this.positionActionButton = 37,
     this.isStarted,
+    this.percentage = '0',
+    this.numberOfPageRead = 0,
   });
 
   final String image;
@@ -29,7 +32,9 @@ class BookCard extends StatelessWidget {
   final String? buttonLabel;
   final double textWidth;
   final double positionActionButton;
-  final bool? isStarted;
+  final BookStatus? isStarted;
+  final String? percentage;
+  final int? numberOfPageRead;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +103,7 @@ class BookCard extends StatelessWidget {
               ),
             ),
           ),
-          if (isStarted == true)
+          if (isStarted == BookStatus.inProgress)
             Positioned(
               top: 55,
               right: 15,
@@ -129,6 +134,16 @@ class BookCard extends StatelessWidget {
                   const Spacer(),
                   Row(
                     children: <Widget>[
+                      if (numberOfPageRead != 0)
+                        Container(
+                          width: 120,
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          alignment: Alignment.center,
+                          child: Text(percentage!,
+                              style: TextStyle(
+                                fontSize: FontSizeTheme.bodyRegular.sp,
+                              )),
+                        ),
                       if (watchDetail == true)
                         GestureDetector(
                           onTap: pressDetail,
@@ -139,9 +154,13 @@ class BookCard extends StatelessWidget {
                             child: const Text('Details'),
                           ),
                         )
+                      else if (numberOfPageRead != 0)
+                        SizedBox(
+                          width: 20.0.w,
+                        )
                       else
-                        const SizedBox(
-                          width: 120,
+                        SizedBox(
+                          width: 120.0.w,
                         ),
                       Expanded(
                         child: MButtonTwoSideRounded(

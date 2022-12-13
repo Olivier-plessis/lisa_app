@@ -8,7 +8,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:lisa_app/common/datas/providers/providers.dart';
+import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 
@@ -101,6 +101,8 @@ class _CurrentBookDetailState extends State<CurrentBookDetail> {
 
   @override
   Widget build(BuildContext context) {
+    bool finished = widget.book!.status == BookStatus.isFinished;
+
     return widget.book == null
         ? const SizedBox.shrink()
         : Column(
@@ -116,7 +118,8 @@ class _CurrentBookDetailState extends State<CurrentBookDetail> {
                 imageLink: '${widget.book!.volumeInfo?.imageLinks?.medium}',
                 onTapButton: () => widget.ref
                     .read(readingNotifierProvider.notifier)
-                    .startToReadBook(book: widget.book!),
+                    .startToReadBook(
+                        book: widget.book!, status: BookStatus.inProgress),
                 buttonText: 'start to read',
                 restoreToFavorite: true,
                 onTapToFavorite: () => {
@@ -135,14 +138,14 @@ class _CurrentBookDetailState extends State<CurrentBookDetail> {
                       .removeFromReadingList(book: widget.book!);
                   context.goNamed(AppPage.reading.routeName);
                 },
-                starToRead: widget.book!.isStarted,
+                starToRead: widget.book!.status,
               ),
               BookPageCategories(
                 pageCount:
                     int.parse(widget.book!.volumeInfo!.pageCount.toString()),
                 categories: '${widget.book!.volumeInfo?.categories}',
                 numberOfPageRead: widget.book!.numberOfPageRead.toString(),
-                isStarted: widget.book!.isStarted,
+                isStarted: widget.book!.status,
                 onTap: () {
                   _displayTextInputDialog(context);
                 },
@@ -155,14 +158,19 @@ class _CurrentBookDetailState extends State<CurrentBookDetail> {
                         padding: EdgeInsets.all(8.0.sp),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
-                            color: ColorTheme.mainGreenColor),
-                        child: Text(
-                            'Start since : ${DateFormat.yMMMd().format(
-                              DateTime.parse(widget.book!.startedAt.toString()),
-                            )}',
-                            style: const TextStyle(
-                                color: ColorTheme.secondaryColor,
-                                fontSize: 12))),
+                            color: !finished
+                                ? ColorTheme.mainGreenColor
+                                : ColorTheme.darkPurpleColor),
+                        child: !finished
+                            ? Text(
+                                'Start since : ${DateFormat.yMMMd().format(
+                                  DateTime.parse(
+                                      widget.book!.startedAt.toString()),
+                                )}',
+                                style: const TextStyle(
+                                    color: ColorTheme.secondaryColor,
+                                    fontSize: 12))
+                            : Text('complete'.toUpperCase())),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -218,6 +226,13 @@ class _CurrentBookDetailState extends State<CurrentBookDetail> {
                             book: widget.book!,
                             numberOfPageRead: int.parse(value));
                     Navigator.of(context).pop();
+                  }
+                  if (int.parse(value) ==
+                      widget.book!.volumeInfo!.pageCount.toInt()) {
+                    widget.ref
+                        .read(readingNotifierProvider.notifier)
+                        .startToReadBook(
+                            book: widget.book!, status: BookStatus.isFinished);
                   }
                 } catch (e) {}
               },

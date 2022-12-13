@@ -41,11 +41,12 @@ class ReadingNotifier extends StateNotifier<SingleBookState> {
     );
   }
 
-  Future<void> startToReadBook({required SingleBook book}) async {
+  Future<void> startToReadBook(
+      {required SingleBook book, required BookStatus status}) async {
     state = const SingleBookState.submitting();
 
     final Either<Failure, Unit> response =
-        await _readingRepository.startToReadBook(book: book);
+        await _readingRepository.startToReadBook(book: book, status: status);
 
     state = response.fold(
       (Failure l) => SingleBookState.error(error: l),

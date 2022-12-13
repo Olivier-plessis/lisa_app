@@ -4,13 +4,14 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:lisa_app/common/datas/providers/providers.dart';
+import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/presentation/widgets/book/book_card.dart';
 import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 
 class ReadingPage extends StatelessWidget {
   const ReadingPage({super.key});
@@ -23,7 +24,7 @@ class ReadingPage extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.transparent,
-            expandedHeight: 184.0,
+            expandedHeight: 188.0,
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               titlePadding: const EdgeInsets.only(top: 10),
@@ -45,10 +46,15 @@ class ReadingPage extends StatelessWidget {
                       bottomRight: Radius.circular(20),
                     ),
                   ),
-                  child: BookSliverAppBar(
-                    size: size,
-                    title: 'My reading list &',
-                    subtitle: 'Blabla',
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      BookSliverAppBar(
+                        size: size,
+                        title: 'My reading list &',
+                        subtitle: 'Blabla',
+                      ),
+                    ],
                   )),
             ),
           ),
@@ -68,6 +74,12 @@ class _ReadingList extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 24.0,
+            ),
+            child: FilterRadioButton(),
+          ),
           ref.watch<SingleBookListState>(readingListNotifierProvider).maybeMap(
                 orElse: () => const SizedBox.shrink(),
                 empty: (_) => SizedBox(
@@ -144,7 +156,38 @@ class _BookListCard extends StatelessWidget {
       auth: item.volumeInfo!.authors.first,
       image: '${item.volumeInfo?.imageLinks?.medium}',
       pressRead: pressRead,
-      isStarted: item.isStarted,
+      isStarted: item.status,
+      numberOfPageRead: item.numberOfPageRead,
+      percentage:
+          '${(item.numberOfPageRead / item.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
     );
+  }
+}
+
+class FilterRadioButton extends ConsumerWidget {
+  const FilterRadioButton({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return CustomRadioButton(
+        padding: 6,
+        enableShape: true,
+        buttonValues: getListOfFilters(),
+        buttonLables: getListOfFilters(),
+        defaultSelected: getListOfFilters()[0],
+        radioButtonValue: (String value) {
+          if (value == FilterBooks.pending.getFiltersBooks())
+            ref.read(filterProvider.notifier).state = FilterBooks.pending;
+          else if (value == FilterBooks.inProgress.getFiltersBooks())
+            ref.read(filterProvider.notifier).state = FilterBooks.inProgress;
+          else
+            ref.read(filterProvider.notifier).state = FilterBooks.isFinished;
+        },
+        elevation: 0,
+        autoWidth: true,
+        selectedBorderColor: Colors.transparent,
+        unSelectedBorderColor: Colors.transparent,
+        selectedColor: ColorTheme.mainGreenColor,
+        unSelectedColor: ColorTheme.orangeLightColor);
   }
 }

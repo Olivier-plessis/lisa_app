@@ -6,13 +6,15 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:lisa_app/common/datas/datasources/firebase_collections.dart';
+import 'package:lisa_app/common/domain/models/book/book.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
 abstract class IReadingRemoteDataSource {
   Future<Unit> addBookToReadingList({required SingleBook book});
   Future<Unit> removeFromReadingList({required SingleBook book});
   Stream<List<SingleBook>> getReadingBooks();
-  Future<Unit> startToReadBook({required SingleBook book});
+  Future<Unit> startToReadBook(
+      {required SingleBook book, required BookStatus status});
   Future<Unit> updatePageReadBook(
       {required SingleBook book, required int numberOfPageRead});
 }
@@ -70,7 +72,8 @@ class ReadingDataSource implements IReadingRemoteDataSource {
   }
 
   @override
-  Future<Unit> startToReadBook({required SingleBook book}) async {
+  Future<Unit> startToReadBook(
+      {required SingleBook book, required BookStatus status}) async {
     try {
       final User? user = _firebaseAuth.currentUser;
       final QuerySnapshot<Map<String, dynamic>> startBook =
@@ -82,7 +85,7 @@ class ReadingDataSource implements IReadingRemoteDataSource {
               .get();
 
       startBook.docs.first.reference.update({
-        'isStarted': true,
+        'status': status.name,
         'startedAt': DateTime.now(),
       });
 
