@@ -58,6 +58,7 @@ dependencies:
   lisa_bottom_bar:
     path: packages/lisa_bottom_bar
   intl: ^0.17.0
+  custom_radio_grouped_button: ^2.1.2+2
 
 
 
