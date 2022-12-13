@@ -8,7 +8,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:lisa_app/common/datas/providers/providers.dart';
+import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 
