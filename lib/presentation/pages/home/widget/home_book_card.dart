@@ -6,28 +6,20 @@ import 'package:atomic_ui/atomic_ui.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 
-class HomeReadingCard extends StatelessWidget {
-  const HomeReadingCard({
+class SmallBookCard extends StatelessWidget {
+  const SmallBookCard({
     super.key,
     required this.image,
-    required this.title,
-    required this.author,
-    this.percentage = '',
-    this.numberOfPageRead = 0,
     required this.pressRead,
   });
   final String image;
-  final String title;
-  final String author;
-  final String? percentage;
-  final int? numberOfPageRead;
   final Function() pressRead;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(right: 24, top: 10.h, bottom: 0.h),
-      width: 202,
+      width: 152,
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -35,7 +27,7 @@ class HomeReadingCard extends StatelessWidget {
             left: 0,
             right: 0,
             child: Container(
-              height: 201,
+              height: 164,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(29),
@@ -56,55 +48,22 @@ class HomeReadingCard extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 130,
+            top: 80.0.h,
             child: SizedBox(
               height: 85,
-              width: 202,
+              width: 152,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24),
-                    child: RichText(
-                      maxLines: 2,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '$title\n',
-                            style: TextStyle(
-                                fontSize: FontSizeTheme.bodyMedium.toDouble(),
-                                fontWeight: FontWeight.bold,
-                                color: ColorTheme.secondaryColor),
-                          ),
-                          TextSpan(
-                            text: author,
-                            style: const TextStyle(
-                              color: ColorTheme.orangeColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                   const Spacer(),
                   Row(
                     children: <Widget>[
-                      if (numberOfPageRead != 0)
-                        Container(
-                          width: 90,
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          alignment: Alignment.center,
-                          child: Text(percentage!,
-                              style: TextStyle(
-                                fontSize: FontSizeTheme.bodyRegular.sp,
-                              )),
-                        ),
                       SizedBox(
-                        width: numberOfPageRead != 0 ? 0.0 : 70.0.w,
+                        width: 60.0.w,
                       ),
                       Expanded(
                         child: MButtonTwoSideRounded(
-                          text: 'Read',
+                          text: 'Detail',
                           press: pressRead,
                         ),
                       )

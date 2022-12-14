@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
 import 'package:collection/collection.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
+import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 import 'package:lisa_app/common/routes/router_utils.dart';
-
 import 'package:lisa_app/presentation/widgets/book/book_description.dart';
 import 'package:lisa_app/presentation/widgets/book/book_header.dart';
 import 'package:lisa_app/presentation/widgets/book/book_page_categories.dart';

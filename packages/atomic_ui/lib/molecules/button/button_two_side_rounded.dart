@@ -18,7 +18,7 @@ class MButtonTwoSideRounded extends StatelessWidget {
       onTap: press,
       child: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: EdgeInsets.symmetric(vertical: 8.0.h),
         decoration: BoxDecoration(
           color: ColorTheme.secondaryColor,
           borderRadius: BorderRadius.only(

@@ -36,6 +36,20 @@ extension PaddingExt on Widget {
     );
   }
 
+  Widget paddedLT(double value) {
+    return Padding(
+      padding: EdgeInsets.only(top: value),
+      child: this,
+    );
+  }
+
+  Widget paddedB(double value) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: value),
+      child: this,
+    );
+  }
+
   Widget paddedAll(double value) {
     return Padding(
       padding: EdgeInsets.all(value),

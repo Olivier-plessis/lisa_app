@@ -71,8 +71,8 @@ class LisaBottomNavigation extends StatelessWidget {
                                 child: Icon(
                                   itemIcons[0],
                                   color: selectedIndex == 0
-                                      ? selectedColor
-                                      : unselectedColor,
+                                      ? unselectedColor
+                                      : selectedColor,
                                 ),
                               ),
                             ),

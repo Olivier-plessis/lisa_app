@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
 import 'package:atomic_ui/atomic_ui.dart';
-import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
+import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 
 class BookCard extends StatelessWidget {
@@ -18,7 +18,6 @@ class BookCard extends StatelessWidget {
     this.buttonLabel = 'Read',
     this.textWidth = 200,
     this.positionActionButton = 37,
-    this.isStarted,
     this.percentage = '0',
     this.numberOfPageRead = 0,
   });
@@ -32,7 +31,6 @@ class BookCard extends StatelessWidget {
   final String? buttonLabel;
   final double textWidth;
   final double positionActionButton;
-  final BookStatus? isStarted;
   final String? percentage;
   final int? numberOfPageRead;
 
@@ -103,26 +101,6 @@ class BookCard extends StatelessWidget {
               ),
             ),
           ),
-          if (isStarted == BookStatus.inProgress)
-            Positioned(
-              top: 55,
-              right: 15,
-              child: Container(
-                height: 30,
-                width: 30,
-                decoration: BoxDecoration(
-                  color: ColorTheme.mainGreenColor,
-                  borderRadius: BorderRadius.circular(10.0),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      offset: const Offset(0, 3),
-                      blurRadius: 5,
-                      color: ColorTheme.kShadowColor.withOpacity(.84),
-                    ),
-                  ],
-                ),
-              ),
-            ),
           Positioned(
             top: 100,
             child: SizedBox(
@@ -160,7 +138,7 @@ class BookCard extends StatelessWidget {
                         )
                       else
                         SizedBox(
-                          width: 120.0.w,
+                          width: 130.0.w,
                         ),
                       Expanded(
                         child: MButtonTwoSideRounded(

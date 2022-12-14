@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
+
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
 Iterable<E> mapIndexed<E, T>(

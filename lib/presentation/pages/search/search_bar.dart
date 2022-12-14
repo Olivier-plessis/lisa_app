@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:lisa_app/common/domain/providers/providers.dart';
@@ -33,7 +32,7 @@ class _SearchBarState extends ConsumerState<BooksSearchBar> {
   Widget build(BuildContext context) {
     final String query = ref.watch(booksSearchTextProvider);
     return SizedBox(
-      height: 60,
+      height: 60.0.h,
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
         child: TextField(

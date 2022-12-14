@@ -22,7 +22,6 @@ import 'package:lisa_app/common/domain/notifier/settings/settings_notifier.dart'
 import 'package:lisa_app/common/domain/state/book/book_state.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_state.dart';
-
 import 'package:lisa_app/common/domain/state/settings/settings_state.dart';
 import 'package:lisa_app/main/app_environment.dart';
 

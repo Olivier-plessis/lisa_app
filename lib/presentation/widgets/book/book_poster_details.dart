@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
-import 'package:lisa_app/common/domain/models/book/single_book.dart';
 
+import 'package:lisa_app/common/domain/models/book/single_book.dart';
 import 'package:lisa_app/presentation/widgets/book/book_poster_widget.dart';
 
 class BookPosterDetails extends StatelessWidget {

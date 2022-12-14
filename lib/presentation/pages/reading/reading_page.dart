@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:app_ui/app_ui.dart';
+import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/models/book/single_book.dart';
+import 'package:lisa_app/common/domain/providers/providers.dart';
 import 'package:lisa_app/common/domain/state/book/single_book_list_state.dart';
-
 import 'package:lisa_app/common/routes/router_utils.dart';
 import 'package:lisa_app/presentation/widgets/book/book_card.dart';
 import 'package:lisa_app/presentation/widgets/book/book_sliver_app_bar.dart';
-import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
 
 class ReadingPage extends StatelessWidget {
   const ReadingPage({super.key});
@@ -98,7 +97,7 @@ class _ReadingList extends ConsumerWidget {
                   ),
                 ),
                 loaded: (_) => BookList(
-                  singlebooks: singleBooks,
+                  singleBooks: singleBooks,
                 ),
               ),
         ],
@@ -110,9 +109,9 @@ class _ReadingList extends ConsumerWidget {
 class BookList extends StatelessWidget {
   const BookList({
     super.key,
-    required this.singlebooks,
+    required this.singleBooks,
   });
-  final List<SingleBook> singlebooks;
+  final List<SingleBook> singleBooks;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -121,12 +120,12 @@ class BookList extends StatelessWidget {
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.all(20),
-            itemCount: singlebooks.length,
+            itemCount: singleBooks.length,
             separatorBuilder: (BuildContext context, int index) {
               return const SizedBox(height: 20);
             },
             itemBuilder: (BuildContext context, int index) {
-              final SingleBook item = singlebooks[index];
+              final SingleBook item = singleBooks[index];
               return _BookListCard(
                 item: item,
                 pressRead: () => context.go(
@@ -156,7 +155,6 @@ class _BookListCard extends StatelessWidget {
       auth: item.volumeInfo!.authors.first,
       image: '${item.volumeInfo?.imageLinks?.medium}',
       pressRead: pressRead,
-      isStarted: item.status,
       numberOfPageRead: item.numberOfPageRead,
       percentage:
           '${(item.numberOfPageRead / item.volumeInfo!.pageCount * 100).toStringAsFixed(2)} %',
@@ -170,24 +168,30 @@ class FilterRadioButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return CustomRadioButton(
-        padding: 6,
-        enableShape: true,
-        buttonValues: getListOfFilters(),
-        buttonLables: getListOfFilters(),
-        defaultSelected: getListOfFilters()[0],
-        radioButtonValue: (String value) {
-          if (value == FilterBooks.pending.getFiltersBooks())
-            ref.read(filterProvider.notifier).state = FilterBooks.pending;
-          else if (value == FilterBooks.inProgress.getFiltersBooks())
-            ref.read(filterProvider.notifier).state = FilterBooks.inProgress;
-          else
-            ref.read(filterProvider.notifier).state = FilterBooks.isFinished;
-        },
-        elevation: 0,
-        autoWidth: true,
-        selectedBorderColor: Colors.transparent,
-        unSelectedBorderColor: Colors.transparent,
-        selectedColor: ColorTheme.mainGreenColor,
-        unSelectedColor: ColorTheme.orangeLightColor);
+      padding: 6,
+      enableShape: true,
+      buttonValues: getListOfFilters(),
+      buttonLables: getListOfFilters(),
+      defaultSelected: getListOfFilters()[0],
+      radioButtonValue: (String value) {
+        if (value == FilterBooks.pending.getFiltersBooks())
+          ref.read(filterProvider.notifier).state = FilterBooks.pending;
+        else if (value == FilterBooks.inProgress.getFiltersBooks())
+          ref.read(filterProvider.notifier).state = FilterBooks.inProgress;
+        else
+          ref.read(filterProvider.notifier).state = FilterBooks.isFinished;
+      },
+      elevation: 0,
+      autoWidth: true,
+      selectedBorderColor: Colors.transparent,
+      unSelectedBorderColor: Colors.transparent,
+      selectedColor: ColorTheme.secondaryContainerColor,
+      unSelectedColor: ColorTheme.darkPurpleColor.withOpacity(0.54),
+      buttonTextStyle: ButtonTextStyle(
+          unSelectedColor: ColorTheme.bodyTextColor,
+          textStyle: TextStyle(
+            fontSize: FontSizeTheme.bodyLight.toDouble(),
+          )),
+    );
   }
 }
